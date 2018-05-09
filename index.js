@@ -17,8 +17,8 @@ restService.post("/caixaWebhook", function(req, res) {
   var speech =
     req.body.queryResult &&
     req.body.queryResult.parameters &&
-    req.body.queryResult.parameters.unit-information
-      ? req.body.queryResult.parameters.unit-information
+    req.body.queryResult.parameters.jogo
+      ? req.body.queryResult.parameters.jogo
       : "Tivemos algum problema, pode repetir, por favor?";
   return res.json({
     speech: speech,
