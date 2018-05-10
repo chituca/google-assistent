@@ -21,8 +21,6 @@ restService.post("/caixaWebhook", function(req, res) {
       ? req.body.queryResult.parameters.jogo
       : "Tivemos algum problema, pode repetir, por favor?";
   return res.json({   
- // --------
-    {
 "fulfillmentText": "Caixa Response",
 "fulfillmentMessages": [],
 "source": "caixa.gov.br",
@@ -56,9 +54,6 @@ restService.post("/caixaWebhook", function(req, res) {
     "param": "param value"
   }
 }
-}
-
-//    ---------
   });
 });
 
