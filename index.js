@@ -23,7 +23,6 @@ restService.post("/caixaWebhook", function(req, res) {
   return res.json({   
 "fulfillmentText": "Caixa Response",
 "fulfillmentMessages": [
-{
     "card": {
       "title": "Caixa",
       "subtitle": "card text",
@@ -35,7 +34,6 @@ restService.post("/caixaWebhook", function(req, res) {
         }
       ]
     }
-  }
 ],
 "source": "caixa.gov.br",
 "payload": {
