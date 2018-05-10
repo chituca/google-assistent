@@ -35,6 +35,14 @@ restService.post("/caixaWebhook", function(req, res) {
         }
       ]
     }
+  },
+
+  {
+    "text": {
+      "text": [
+        "teste google Caixa"
+      ]
+    }
   }
 ],
 "source": "caixa.gov.br",
