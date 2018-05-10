@@ -23,20 +23,6 @@ restService.post("/caixaWebhook", function(req, res) {
   return res.json({   
 "fulfillmentText": "Caixa Response",
 "fulfillmentMessages": [
-{
-    "card": {
-      "title": "Caixa",
-      "subtitle": "card text",
-      "imageUri": "https://assistant.google.com/static/images/molecule/Molecule-Formation-stop.png",
-      "buttons": [
-        {
-          "text": "button text",
-          "postback": "https://assistant.google.com/"
-        }
-      ]
-    }
-  },
-
   {
     "text": {
       "text": [
