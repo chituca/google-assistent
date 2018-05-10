@@ -22,18 +22,20 @@ restService.post("/caixaWebhook", function(req, res) {
       : "Tivemos algum problema, pode repetir, por favor?";
   return res.json({   
 "fulfillmentText": "Caixa Response",
-"fulfillmentMessages": [{
+"fulfillmentMessages": [
+{
     "card": {
       "title": "Caixa",
-      "subtitle": "Caixa Econômica Federal",
+      "subtitle": "card text",
       "imageUri": "https://assistant.google.com/static/images/molecule/Molecule-Formation-stop.png",
       "buttons": [
         {
           "text": "button text",
           "postback": "https://assistant.google.com/"
         }
-        }]
+      ]
     }
+  }
 ],
 "source": "caixa.gov.br",
 "payload": {
@@ -61,7 +63,7 @@ restService.post("/caixaWebhook", function(req, res) {
 ],
 "followupEventInput": {
   "name": "event name",
-  "languageCode": "en-US",
+  "languageCode": "pt-BR",
   "parameters": {
     "param": "param value"
   }
