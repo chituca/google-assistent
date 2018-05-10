@@ -20,29 +20,11 @@ restService.post("/caixaWebhook", function(req, res) {
     req.body.queryResult.parameters.jogo
       ? req.body.queryResult.parameters.jogo
       : "Tivemos algum problema, pode repetir, por favor?";
-  return res.json({
-    speech: speech,
-    displayText: speech,
-    source: "webhook-caixa"
-    
+  return res.json({   
  // --------
     {
 "fulfillmentText": "Caixa Response",
-"fulfillmentMessages": [
-  /*{
-    "card": {
-      "title": "card title",
-      "subtitle": "card text",
-      "imageUri": "https://assistant.google.com/static/images/molecule/Molecule-Formation-stop.png",
-      "buttons": [
-        {
-          "text": "button text",
-          "postback": "https://assistant.google.com/"
-        }
-      ]
-    }
-  }*/
-],
+"fulfillmentMessages": [],
 "source": "caixa.gov.br",
 "payload": {
   "google": {
@@ -51,18 +33,12 @@ restService.post("/caixaWebhook", function(req, res) {
       "items": [
         {
           "simpleResponse": {
-            "textToSpeech": "this is a simple response"
+            "textToSpeech": "exemplo de resposta google assistent"
           }
         }
       ]
     }
-  },
-  /*"facebook": {
-    "text": "Hello, Facebook!"
-  },
-  "slack": {
-    "text": "This is a text response for Slack."
-  }*/
+  }
 },
 "outputContexts": [
   {
@@ -81,6 +57,7 @@ restService.post("/caixaWebhook", function(req, res) {
   }
 }
 }
+
 //    ---------
   });
 });
