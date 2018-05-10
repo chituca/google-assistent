@@ -22,17 +22,17 @@ restService.post("/caixaWebhook", function(req, res) {
       : "Tivemos algum problema, pode repetir, por favor?";
   return res.json({   
 "fulfillmentText": "Caixa Response",
-"fulfillmentMessages": [
+"fulfillmentMessages": [{
     "card": {
       "title": "Caixa",
-      "subtitle": "card text",
+      "subtitle": "Caixa Econômica Federal",
       "imageUri": "https://assistant.google.com/static/images/molecule/Molecule-Formation-stop.png",
       "buttons": [
         {
           "text": "button text",
           "postback": "https://assistant.google.com/"
         }
-      ]
+        }]
     }
 ],
 "source": "caixa.gov.br",
