@@ -21,7 +21,8 @@ restService.post("/caixaWebhook", function(req, res) {
       ? req.body.queryResult.parameters.jogo
       : "Tivemos algum problema, pode repetir, por favor?";
   return res.json({   
-          "fulfillmentText": "<speak>" + "ok <break time=\"2s\"/>, os números sorteados foram:"+ "</speak>",
+          "fulfillmentText": "<speak>" + "ok <break time=\"2s\"/>, os números sorteados foram:"+ 
+          "</speak>",
           "fulfillmentMessages": [{
             "text": {"text":["agora esse?"+" mesmo"]}
           }
