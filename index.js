@@ -21,11 +21,7 @@ restService.post("/caixaWebhook", function(req, res) {
       ? req.body.queryResult.parameters.jogo
       : "Tivemos algum problema, pode repetir, por favor?";
   return res.json({   
-          "fulfillmentText": "<speak>" + 
-	                           "ok <break time="2s"/>, os números sorteados foram:" +
-	                           "06 <say-as interpret-as="cardinal">12 22 28 31 44</say-as>, \n a estimativa de prêmio para o próximo concurso," +
-	                           "em 12/05/2018, é de R$ 50.000.000,00, \n o valor acumulado para o próximo concurso é de R$ 44.786.421,27" + 
-                             "</speak>",
+          "fulfillmentText": "<speak>Olá</speak>",
           "fulfillmentMessages": [{
             "text": {"text":["06 25 26 35 38 40 \n Estimativa de prêmio do próximo concurso, em 12/05/2018, é de R$ 30.000.000,00 \n Acumulado para o próximo concurso R$ 26.744.923,97"]}
           }
