@@ -23,7 +23,7 @@ restService.post("/caixaWebhook", function(req, res) {
   return res.json({   
           "fulfillmentText": "<speak>" + 
           "ok <break time=\"2s\"/>, os números sorteados foram:" +
-          "06 <say-as interpret-as=\"cardinal\">12 22 28 31 44</say-as>, \n a estimativa de prêmio para o próximo concurso," +
+          "06 <say-as interpret-as=\"cardinal\">12</say-as>, \n a estimativa de prêmio para o próximo concurso," +
 	        "em 12/05/2018, é de R$ 50.000.000,00, \n o valor acumulado para o próximo concurso é de R$ 44.786.421,27" + 
           "</speak>",
           "fulfillmentMessages": [{
