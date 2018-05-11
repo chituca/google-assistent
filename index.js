@@ -25,7 +25,7 @@ restService.post("/caixaWebhook", function(req, res) {
           "ok <break time=\"1s\"/>, os números sorteados foram: " +
           "06 <say-as interpret-as=\"cardinal\">12</say-as> <say-as interpret-as=\"cardinal\">22</say-as>"+
 	  "<say-as interpret-as=\"cardinal\">28</say-as> <say-as interpret-as=\"cardinal\">31</say-as>"+
-	  "<say-as interpret-as=\"cardinal\">31</say-as> <say-as interpret-as=\"cardinal\">44</say-as>, <break time=\"1s\"/>"+
+	  "<say-as interpret-as=\"cardinal\">31</say-as> <say-as interpret-as=\"cardinal\">44</say-as><break time=\"1s\"/>"+
 	  "\n a estimativa de prêmio para o próximo concurso," +
 	  "em 12/05/2018, é de R$ 50.000.000,00, \n o valor acumulado para o próximo concurso é de R$ 44.786.421,27" + 
           "</speak>",
