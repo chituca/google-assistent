@@ -14,14 +14,6 @@ restService.use(
 restService.use(bodyParser.json());
 
 restService.post("/caixaWebhook", function(req, res) {
-// Get qual jogo
-//let city = req.body.queryResult.parameters['geo-city']; 
-// Get the date  (if present)
- /* let date = '';
-  if (req.body.queryResult.parameters['date']) {
-    date = req.body.queryResult.parameters['date'];
-    console.log('Date: ' + date);
-  }*/
   var speech =
     req.body.queryResult &&
     req.body.queryResult.parameters &&
@@ -35,28 +27,11 @@ var jogo = '01001000';
     "fulfillmentMessages": [{
         "text": {"text":["Assistente Virtual Caixa!"]}
       }
-
     ],
     "source": "caixa.gov.br" }); // Return the results of the weather API to Dialogflow
   }).catch(() => {
     res.json({ 'fulfillmentText': `I don't know the weather but I hope it's good!` });
   });
- /* return res.json({   
-          "fulfillmentText": "<speak>" + 
-          "ok <break time=\"1s\"/>, os números sorteados foram: " +
-          "06 <say-as interpret-as=\"cardinal\">12</say-as> <say-as interpret-as=\"cardinal\">22</say-as>"+
-	        "<say-as interpret-as=\"cardinal\">28</say-as> <say-as interpret-as=\"cardinal\">31</say-as>"+
-	        "<say-as interpret-as=\"cardinal\">44</say-as><break time=\"1s\"/>"+
-	        "\n a estimativa de prêmio para o próximo concurso, " +
-	        "em 12/05/2018, é de R$ 50.000.000,00, \n <break time=\"1s\"/>o valor acumulado para o próximo concurso é de R$ 44.786.421,27" + 
-          "</speak>",
-          "fulfillmentMessages": [{
-            "text": {"text":["Assistente Virtual Caixa!"]}
-          }
-
-        ],
-        "source": "caixa.gov.br"
-  });*/
 });
 
 function getLoterias (jogo) {
@@ -90,5 +65,9 @@ function getLoterias (jogo) {
         reject();
       });
     });
+
   });
 }
+restService.listen(process.env.PORT || 8000, function() {
+  console.log("Server up and listening");
+});
