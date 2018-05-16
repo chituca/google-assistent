@@ -59,7 +59,7 @@ function getLoteria(options, cb){
 }
 
 //*** Chama API de Loterias ***//
-var options = {
+/*var options = {
     host: 'api.caixa.gov.br',
     port: 8443,
     path: '/loterias/v2/resultados/Mega-Sena?concurso=',
@@ -74,7 +74,7 @@ getLoteria(options, function(err, result){
     }
     console.log(result);
 });
-
+*/
 /*app.listen(process.env.PORT || 8000, function() {
     console.log("Caixa server google assistente rodando!");
   });*/
