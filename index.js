@@ -36,7 +36,12 @@ app.post("/caixaWebhook", function(req, res) {
                 var dataSorteio = formata_data(result.resultado.data);
                 var dataProximo = formata_data(result.resultado.DT_PROXIMO_CONCURSO);
                 var cabecalho = "<speak>ok <break time=\"1s\"/>, parao concurso "+concurso+" foram sorteados: " +
-                "<say-as interpret-as=\"cardinal\">"+sorteados[0]+"</say-as>";
+                "<say-as interpret-as=\"cardinal\">"+sorteados[0]+"</say-as>"+
+                "<say-as interpret-as=\"cardinal\">"+sorteados[1]+"</say-as>"+
+                "<say-as interpret-as=\"cardinal\">"+sorteados[2]+"</say-as>"+
+                "<say-as interpret-as=\"cardinal\">"+sorteados[3]+"</say-as>"+
+                "<say-as interpret-as=\"cardinal\">"+sorteados[4]+"</say-as>"+
+                "<say-as interpret-as=\"cardinal\">"+sorteados[5]+"</say-as>";
 
                 if(ganhadores === 0) {
                     var estimativa = formataReal(result.resultado.VR_ESTIMATIVA);
