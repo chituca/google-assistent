@@ -31,8 +31,8 @@ app.post("/caixaWebhook", function(req, res) {
                     reject();
                 }
                 var concurso = result.resultado.concurso;
-                var ganhadores = result.resultado.ganhadores;
-                var sorteados = result.resultado.resultado;
+                //var ganhadores = result.resultado.ganhadores;
+                //var sorteados = result.resultado.resultado;
                 //var data_sorteio = formata_data(result.resultado.data);
                 //var data_proximo = formata_data(result.resultado.DT_PROXIMO_CONCURSO);
 
@@ -46,7 +46,7 @@ app.post("/caixaWebhook", function(req, res) {
                 "em "+result.resultado.DT_PROXIMO_CONCURSO+", é de R$ 50.000.000,00, \n <break time=\"1s\"/>o valor acumulado para o próximo concurso é de R$ 44.786.421,27" + 
                 "</speak>";
 
-                if(ganhadores === 0) {
+                /*if(ganhadores === 0) {
                     var estimativa = formataReal(msg.payload.resultado.VR_ESTIMATIVA);
                     mega = cabecalho+"\nACUMULOU!\nEstimativa de prêmio para o próximo concurso:\n"+ estimativa +
                         "\n" + data_proximo +
@@ -56,9 +56,8 @@ app.post("/caixaWebhook", function(req, res) {
                     var premio = formataReal(msg.payload.resultado.valor);
                     mega = cabecalho+"\nPremiação\nSena - 6 números acertados\n"+ganhadores+" aposta(s) ganhadora(s)\n"+
                         premio+"\nMaiores detalhes em:\nhttp://loterias.caixa.gov.br";    
-                }
+                } */
             });
-           
         }
     return res.json({   
             "fulfillmentText": megaSena,
