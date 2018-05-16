@@ -35,8 +35,24 @@ app.post("/caixaWebhook", function(req, res) {
                 var sorteados = result.resultado.resultado;
                 var dataSorteio = formata_data(result.resultado.data);
                 var dataProximo = formata_data(result.resultado.DT_PROXIMO_CONCURSO);
+                var cabecalho = "<speak>ok <break time=\"1s\"/>, parao concurso "+concurso+" foram: <break time=\"1s\"/>" +
+                "<say-as interpret-as=\"cardinal\">"+sorteados+"</say-as>";
 
-                megaSena = "<speak>" + 
+                if(ganhadores === 0) {
+                    var estimativa = formataReal(result.resultado.VR_ESTIMATIVA);
+                    var acumulado = formataReal(result.resultado.valor_acumulado1);
+                    megaSena = cabecalho+"\nACUMULOU!\na estimativa de prêmio para o próximo concurso em "+dataProximo+
+                    ", é de "+ estimativa + "\n <break time=\"1s\"/>o valor acumulado para o próximo concurso é de "+
+                    acumulado + "</speak> \nMaiores detalhes em: \nhttp://loterias.caixa.gov.br";
+                
+                    } else {
+                        
+                    var premio = formataReal(result.resultado.valor);
+                    megaSena = cabecalho+"\nPremiação\nSena - 6 números acertados\n"+ganhadores+" aposta(s) ganhadora(s)\n"+
+                        premio+"\nMaiores detalhes em:\nhttp://loterias.caixa.gov.br";    
+                }
+
+                /*megaSena = "<speak>" + 
                 "ok <break time=\"1s\"/>, os números sorteados para "+jogo+",<break time=\"1s\"/> concurso "+
                 concurso+" foram: <break time=\"1s\"/>" +
                 "06 <say-as interpret-as=\"cardinal\">12</say-as> <say-as interpret-as=\"cardinal\">22</say-as>"+
@@ -44,19 +60,7 @@ app.post("/caixaWebhook", function(req, res) {
                 "<say-as interpret-as=\"cardinal\">44</say-as><break time=\"1s\"/>"+
                 "\n a estimativa de prêmio para o próximo concurso, " +
                 "em "+dataProximo+", é de R$ 50.000.000,00, \n <break time=\"1s\"/>o valor acumulado para o próximo concurso é de R$ 44.786.421,27" + 
-                "</speak>";
-
-                /*if(ganhadores === 0) {
-                    var estimativa = formataReal(msg.payload.resultado.VR_ESTIMATIVA);
-                    mega = cabecalho+"\nACUMULOU!\nEstimativa de prêmio para o próximo concurso:\n"+ estimativa +
-                        "\n" + data_proximo +
-                        "\n\nMaiores detalhes em:\nhttp://loterias.caixa.gov.br";
-                    } else {
-                        
-                    var premio = formataReal(msg.payload.resultado.valor);
-                    mega = cabecalho+"\nPremiação\nSena - 6 números acertados\n"+ganhadores+" aposta(s) ganhadora(s)\n"+
-                        premio+"\nMaiores detalhes em:\nhttp://loterias.caixa.gov.br";    
-                } */
+                "</speak>";*/
             });
         }
     return res.json({   
