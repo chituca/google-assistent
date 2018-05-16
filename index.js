@@ -30,17 +30,34 @@ app.post("/caixaWebhook", function(req, res) {
                     return console.log('Error ao acessar a API: ', err);
                     reject();
                 }
-                //console.log(result);
-                //console.log();
+                var concurso = result.resultado.concurso;
+                var ganhadores = result.resultado.ganhadores;
+                var sorteados = result.resultado.resultado;
+                var concurso = result.resultado.concurso;
+                var data_sorteio = formata_data(result.resultado.data);
+                var data_proximo = formata_data(result.resultado.DT_PROXIMO_CONCURSO);
+
                 megaSena = "<speak>" + 
                 "ok <break time=\"1s\"/>, os números sorteados para "+jogo+",<break time=\"1s\"/> concurso "+
-                result.resultado.concurso+" foram: <break time=\"1s\"/>" +
+                concurso+" foram: <break time=\"1s\"/>" +
                 "06 <say-as interpret-as=\"cardinal\">12</say-as> <say-as interpret-as=\"cardinal\">22</say-as>"+
                 "<say-as interpret-as=\"cardinal\">28</say-as> <say-as interpret-as=\"cardinal\">31</say-as>"+
                 "<say-as interpret-as=\"cardinal\">44</say-as><break time=\"1s\"/>"+
                 "\n a estimativa de prêmio para o próximo concurso, " +
-                "em 12/05/2018, é de R$ 50.000.000,00, \n <break time=\"1s\"/>o valor acumulado para o próximo concurso é de R$ 44.786.421,27" + 
+                "em "+data_proximo+", é de R$ 50.000.000,00, \n <break time=\"1s\"/>o valor acumulado para o próximo concurso é de R$ 44.786.421,27" + 
                 "</speak>";
+
+                if(ganhadores === 0) {
+                    var estimativa = formataReal(msg.payload.resultado.VR_ESTIMATIVA);
+                    mega = cabecalho+"\nACUMULOU!\nEstimativa de prêmio para o próximo concurso:\n"+ estimativa +
+                        "\n" + data_proximo +
+                        "\n\nMaiores detalhes em:\nhttp://loterias.caixa.gov.br";
+                    } else {
+                        
+                    var premio = formataReal(msg.payload.resultado.valor);
+                    mega = cabecalho+"\nPremiação\nSena - 6 números acertados\n"+ganhadores+" aposta(s) ganhadora(s)\n"+
+                        premio+"\nMaiores detalhes em:\nhttp://loterias.caixa.gov.br";    
+                }
             });
            
         }
@@ -85,6 +102,27 @@ function getOptions(jogo){
     };
     return options;
 }
+
+function formataReal(n) {
+    var valor = parseFloat(n);
+        n =  String(valor.toFixed(2)); 
+    var v= n.replace(/\D/g,"").replace(/(\d{2})$/,",$1").replace(/(\d+)(\d{3},\d{2})$/g,"$1.$2");
+    var qtdLoop = (v.length-3)/3;
+    var count = 0;
+    
+    while (qtdLoop > count)
+    
+    {
+    count++;
+    v=v.replace(/(\d+)(\d{3}.*)/,"$1.$2"); 
+    }
+    return "R$ " + v;
+    }
+    
+function formata_data(str) {
+     var data_siopi = str.replace(/[^\d]+/g, '');
+     return data_siopi.substr(6,2)+"/"+data_siopi.substr(4,2)+"/"+data_siopi.substr(0,4);
+    }
 
 app.listen(process.env.PORT || 8000, function() {
     console.log("Caixa server google assistente rodando!");
