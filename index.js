@@ -5,7 +5,7 @@ const https = require('https');
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
-var megaSena = '';
+var resultadoLoterias = '';
 
 app.use(
     bodyParser.urlencoded({
@@ -19,8 +19,8 @@ app.post("/caixaWebhook", function(req, res) {
     var jogo =
       req.body.queryResult &&
       req.body.queryResult.parameters &&
-      req.body.queryResult.parameters.jogo
-        ? req.body.queryResult.parameters.jogo
+      req.body.queryResult.parameters.Loterias
+        ? req.body.queryResult.parameters.Loterias
         : "Erro";
         if(jogo === "Mega-Sena"){
             var options = getOptions(jogo);
@@ -46,20 +46,20 @@ app.post("/caixaWebhook", function(req, res) {
                 if(ganhadores === 0) {
                     var estimativa = formataReal(result.resultado.VR_ESTIMATIVA);
                     var acumulado = formataReal(result.resultado.valor_acumulado1);
-                    megaSena = cabecalho+"<break time=\"1s\"/>o prêmio acumulou e a estimativa para o próximo concurso em "+dataProximo+
-                    ", é de "+ estimativa + " <break time=\"2s\"/>, o valor acumulado para o próximo concurso é de "+acumulado+"</speak>";
+                    resultadoLoterias = cabecalho+"<break time=\"1s\"/>o prêmio acumulou e a estimativa para o próximo concurso, em "+dataProximo+
+                    ", é de "+ estimativa + " <break time=\"1s\"/>, o valor acumulado para o próximo concurso é de "+acumulado+".</speak>";
                 
                     } else {
                     var premio = formataReal(result.resultado.valor);
-                    megaSena = cabecalho+"<break time=\"1s\"/> <say-as interpret-as=\"cardinal\">"+ganhadores+"</say-as> apostas foram premiadas com valor de "+
+                    resultadoLoterias = cabecalho+"<break time=\"1s\"/> <say-as interpret-as=\"cardinal\">"+ganhadores+"</say-as> apostas foram premiadas com valor de "+
                                premio+"</speak>";    
                 }
             });
         }
     return res.json({   
-            "fulfillmentText": megaSena,
+            "fulfillmentText": resultadoLoterias,
             "fulfillmentMessages": [{
-              "text": {"text":[megaSena]}
+              "text": {"text":[resultadoLoterias]}
             }
   
           ],
