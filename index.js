@@ -44,7 +44,7 @@ app.post("/caixaWebhook", function(req, res) {
                 "<say-as interpret-as=\"cardinal\">28</say-as> <say-as interpret-as=\"cardinal\">31</say-as>"+
                 "<say-as interpret-as=\"cardinal\">44</say-as><break time=\"1s\"/>"+
                 "\n a estimativa de prêmio para o próximo concurso, " +
-                "em "+data_proximo+", é de R$ 50.000.000,00, \n <break time=\"1s\"/>o valor acumulado para o próximo concurso é de R$ 44.786.421,27" + 
+                "em "+result.resultado.DT_PROXIMO_CONCURSO+", é de R$ 50.000.000,00, \n <break time=\"1s\"/>o valor acumulado para o próximo concurso é de R$ 44.786.421,27" + 
                 "</speak>";
 
                 if(ganhadores === 0) {
