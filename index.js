@@ -32,7 +32,7 @@ app.post("/caixaWebhook", function(req, res) {
                 }
                 var concurso = result.resultado.concurso;
                 var ganhadores = result.resultado.ganhadores;
-                var sorteados = result.resultado.resultado.split('-');
+                var sorteados = result.resultado.resultado.split('-').sort();
                 var dataSorteio = formata_data(result.resultado.data);
                 var dataProximo = formata_data(result.resultado.DT_PROXIMO_CONCURSO);
                 var cabecalho = "<speak>ok <break time=\"1s\"/>, parao concurso "+concurso+" foram sorteados: " +
