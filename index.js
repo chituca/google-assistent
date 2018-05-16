@@ -5,7 +5,7 @@ const https = require('https');
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
-var retorno = '';
+var megaSena = '';
 
 app.use(
     bodyParser.urlencoded({
@@ -22,20 +22,28 @@ app.post("/caixaWebhook", function(req, res) {
       req.body.queryResult.parameters.jogo
         ? req.body.queryResult.parameters.jogo
         : "Erro";
-    if(jogo = "Mega-Sena"){
-        retorno = "<speak>" + 
-        "ok <break time=\"1s\"/>, os números sorteados para "+jogo+" foram: " +
-        "06 <say-as interpret-as=\"cardinal\">12</say-as> <say-as interpret-as=\"cardinal\">22</say-as>"+
-          "<say-as interpret-as=\"cardinal\">28</say-as> <say-as interpret-as=\"cardinal\">31</say-as>"+
-          "<say-as interpret-as=\"cardinal\">44</say-as><break time=\"1s\"/>"+
-          "\n a estimativa de prêmio para o próximo concurso, " +
-          "em 12/05/2018, é de R$ 50.000.000,00, \n <break time=\"1s\"/>o valor acumulado para o próximo concurso é de R$ 44.786.421,27" + 
-        "</speak>";
-    }
+        if(jogo === "Mega-Sena"){
+            var options = getOptions(jogo);
+            var resultado = getLoteria(options, function(err, result){
+                if(err){
+                    return console.log('Error ao acessar a API: ', err);
+                    reject();
+                }
+                return result;
+            });
+            megaSena = "<speak>" + 
+            "ok <break time=\"1s\"/>, os números sorteados para "+jogo+" concurso "+resultado.resultado.concurso+", foram: " +
+            "06 <say-as interpret-as=\"cardinal\">12</say-as> <say-as interpret-as=\"cardinal\">22</say-as>"+
+            "<say-as interpret-as=\"cardinal\">28</say-as> <say-as interpret-as=\"cardinal\">31</say-as>"+
+            "<say-as interpret-as=\"cardinal\">44</say-as><break time=\"1s\"/>"+
+            "\n a estimativa de prêmio para o próximo concurso, " +
+            "em 12/05/2018, é de R$ 50.000.000,00, \n <break time=\"1s\"/>o valor acumulado para o próximo concurso é de R$ 44.786.421,27" + 
+            "</speak>";
+        }
     return res.json({   
             "fulfillmentText": retorno,
             "fulfillmentMessages": [{
-              "text": {"text":["Assistente Virtual Caixa!"]}
+              "text": {"text":[retorno]}
             }
   
           ],
@@ -63,21 +71,16 @@ function getLoteria(options, cb){
 }
 
 //*** Chama API de Loterias ***//
-var options = {
+function getOptions(jogo){
+    var options = {
     host: 'api.caixa.gov.br',
     port: 8443,
-    path: '/loterias/v2/resultados/Mega-Sena?concurso=',
+    path: '/loterias/v2/resultados/'+jogo+'?concurso=',
     method: 'GET',
     rejectUnauthorized: false
-};
-
-getLoteria(options, function(err, result){
-    if(err){
-        return console.log('Error ao acessar a API: ', err);
-        reject();
-    }
-    console.log(result);
-});
+    };
+    return options;
+}
 
 app.listen(process.env.PORT || 8000, function() {
     console.log("Caixa server google assistente rodando!");
