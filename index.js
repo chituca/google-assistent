@@ -75,6 +75,8 @@ function getOptions(jogo){
     return options;
 }
 
+var options = getOptions("Mega-Sena");
+
 getLoteria(options, function(err, result){
     if(err){
         return console.log('Error ao acessar a API: ', err);
