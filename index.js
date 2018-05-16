@@ -24,15 +24,8 @@ app.post("/caixaWebhook", function(req, res) {
         : "Erro";
         if(jogo === "Mega-Sena"){
             var options = getOptions(jogo);
-            var resultado = getLoteria(options, function(err, result){
-                if(err){
-                    return console.log('Error ao acessar a API: ', err);
-                    reject();
-                }
-                return result;
-            });
             megaSena = "<speak>" + 
-            "ok <break time=\"1s\"/>, os números sorteados para "+jogo+" concurso "+resultado.resultado.concurso+", foram: " +
+            "ok <break time=\"1s\"/>, os números sorteados para "+jogo+" foram: " +
             "06 <say-as interpret-as=\"cardinal\">12</say-as> <say-as interpret-as=\"cardinal\">22</say-as>"+
             "<say-as interpret-as=\"cardinal\">28</say-as> <say-as interpret-as=\"cardinal\">31</say-as>"+
             "<say-as interpret-as=\"cardinal\">44</say-as><break time=\"1s\"/>"+
@@ -41,9 +34,9 @@ app.post("/caixaWebhook", function(req, res) {
             "</speak>";
         }
     return res.json({   
-            "fulfillmentText": retorno,
+            "fulfillmentText": megaSena,
             "fulfillmentMessages": [{
-              "text": {"text":[retorno]}
+              "text": {"text":[megaSena]}
             }
   
           ],
@@ -81,6 +74,14 @@ function getOptions(jogo){
     };
     return options;
 }
+
+getLoteria(options, function(err, result){
+    if(err){
+        return console.log('Error ao acessar a API: ', err);
+        reject();
+    }
+    console.log(result);
+});
 
 app.listen(process.env.PORT || 8000, function() {
     console.log("Caixa server google assistente rodando!");
