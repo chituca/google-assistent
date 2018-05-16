@@ -35,13 +35,13 @@ app.post("/caixaWebhook", function(req, res) {
                 var sorteados = result.resultado.resultado;
                 var dataSorteio = formata_data(result.resultado.data);
                 var dataProximo = formata_data(result.resultado.DT_PROXIMO_CONCURSO);
-                var cabecalho = "<speak>ok <break time=\"1s\"/>, parao concurso "+concurso+" foram sorteados: <break time=\"1s\"/>" +
+                var cabecalho = "<speak>ok <break time=\"1s\"/>, parao concurso "+concurso+" foram sorteados: " +
                 "<say-as interpret-as=\"cardinal\">"+sorteados+"</say-as>";
 
                 if(ganhadores === 0) {
                     var estimativa = formataReal(result.resultado.VR_ESTIMATIVA);
                     var acumulado = formataReal(result.resultado.valor_acumulado1);
-                    megaSena = cabecalho+"<break time=\"1s\"/>ACUMULOU!<break time=\"1s\"/>A estimativa de prêmio para o próximo concurso em "+dataProximo+
+                    megaSena = cabecalho+"<break time=\"2s\"/>o prêmio acumulou e a estimativa para o próximo concurso em "+dataProximo+
                     ", é de "+ estimativa + " <break time=\"2s\"/>, o valor acumulado para o próximo concurso é de "+acumulado+"</speak>";
                 
                     } else {
