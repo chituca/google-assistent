@@ -33,9 +33,8 @@ app.post("/caixaWebhook", function(req, res) {
                 var concurso = result.resultado.concurso;
                 var ganhadores = result.resultado.ganhadores;
                 var sorteados = result.resultado.resultado;
-                var concurso = result.resultado.concurso;
-                var data_sorteio = formata_data(result.resultado.data);
-                var data_proximo = formata_data(result.resultado.DT_PROXIMO_CONCURSO);
+                //var data_sorteio = formata_data(result.resultado.data);
+                //var data_proximo = formata_data(result.resultado.DT_PROXIMO_CONCURSO);
 
                 megaSena = "<speak>" + 
                 "ok <break time=\"1s\"/>, os números sorteados para "+jogo+",<break time=\"1s\"/> concurso "+
