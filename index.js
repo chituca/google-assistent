@@ -31,10 +31,10 @@ app.post("/caixaWebhook", function(req, res) {
                     reject();
                 }
                 var concurso = result.resultado.concurso;
-                //var ganhadores = result.resultado.ganhadores;
-                //var sorteados = result.resultado.resultado;
-                //var data_sorteio = formata_data(result.resultado.data);
-                //var data_proximo = formata_data(result.resultado.DT_PROXIMO_CONCURSO);
+                var ganhadores = result.resultado.ganhadores;
+                var sorteados = result.resultado.resultado;
+                var dataSorteio = formata_data(result.resultado.data);
+                var dataProximo = formata_data(result.resultado.DT_PROXIMO_CONCURSO);
 
                 megaSena = "<speak>" + 
                 "ok <break time=\"1s\"/>, os números sorteados para "+jogo+",<break time=\"1s\"/> concurso "+
@@ -43,7 +43,7 @@ app.post("/caixaWebhook", function(req, res) {
                 "<say-as interpret-as=\"cardinal\">28</say-as> <say-as interpret-as=\"cardinal\">31</say-as>"+
                 "<say-as interpret-as=\"cardinal\">44</say-as><break time=\"1s\"/>"+
                 "\n a estimativa de prêmio para o próximo concurso, " +
-                "em "+result.resultado.DT_PROXIMO_CONCURSO+", é de R$ 50.000.000,00, \n <break time=\"1s\"/>o valor acumulado para o próximo concurso é de R$ 44.786.421,27" + 
+                "em "+dataProximo+", é de R$ 50.000.000,00, \n <break time=\"1s\"/>o valor acumulado para o próximo concurso é de R$ 44.786.421,27" + 
                 "</speak>";
 
                 /*if(ganhadores === 0) {
