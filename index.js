@@ -30,7 +30,7 @@ app.post("/caixaWebhook", function(req, res) {
                 throw new Error('Error ao acessar a API: ', err);
                 reject();
             }
-            switch(${loteriaSelecionada}) {
+            switch(loteriaSelecionada) {
                 case loterias.Mega:
                      loteriaSelecionada = "agora é Mega-Sena...2";
                      break;
