@@ -56,7 +56,7 @@ app.post("/caixaWebhook", function(req, res) {
                 case loterias.Timemania:
                 resultadoLoterias = "agora é Timemania";
 
-                case default:
+                default:
                 resultadoLoterias = "Jogo não localizado";
                 }
             });
