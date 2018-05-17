@@ -32,15 +32,15 @@ app.post("/caixaWebhook", function(req, res) {
             }
        
                 
-               loteriaSelecionada == 'agora é Mega-Sena...';
+               var loteria = "agora é Mega-Sena...";
                 
           
             });
        
     return res.json({   
-            "fulfillmentText": "não sei mais..."+loteriaSelecionada,
+            "fulfillmentText": "não sei mais..."+loteria,
             "fulfillmentMessages": [{
-              "text": {"text":["não entendo..." +loteriaSelecionada]}
+              "text": {"text":["não entendo..." +loteria]}
             }
   
           ],
