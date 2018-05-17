@@ -59,9 +59,9 @@ app.post("/caixaWebhook", function(req, res) {
             });
        
             return res.json({   
-            "fulfillmentText": resultadoLoterias,
+            "fulfillmentText": loteriaSelecionada,
             "fulfillmentMessages": [{
-              "text": {"text":[resultadoLoterias]}
+              "text": {"text":[loteriaSelecionada]}
             }
   
           ],
