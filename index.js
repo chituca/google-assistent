@@ -29,19 +29,21 @@ app.post("/caixaWebhook", function(req, res) {
       req.body.queryResult.parameters.Loterias
         ? req.body.queryResult.parameters.Loterias
         : "Erro ao identificar a loteria";
-    
-    if(!jogo){
+
+    let loteriaSelecionada = jogo
+
+    if(!loteriaSelecionada){
         throw new Error('loterias não definida!');
     }
     
-        var options = getOptions(jogo);
+        var options = getOptions(loteriaSelecionada);
         
         getLoteria(options, function(err, result){
             if(err){
                 throw new Error('Error ao acessar a API: ', err);
                 reject();
             }
-            switch(jogo) {
+            switch(loteriaSelecionada) {
                 case loterias.Mega:
                 var concurso = result.resultado.concurso;
                 var ganhadores = result.resultado.ganhadores;
@@ -69,12 +71,12 @@ app.post("/caixaWebhook", function(req, res) {
                     }
                 break;
 
-                case loterias.Quina:
-                resultadoLoterias = "agora é quina";
-                break;
-
                 case loterias.Lotofacil:
                 resultadoLoterias = "agora é Lotofacil";
+                break;
+
+                case loterias.Quina:
+                resultadoLoterias = "agora é Quina";
                 break;
 
                 case loterias.Lotomania:
