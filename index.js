@@ -70,13 +70,13 @@ app.post("/caixaWebhook", function(req, res) {
                 resultadoLoterias = "agora é quina";
 
                 case loterias.Lotofacil:
-                resultadoLoterias = "agora é quina";
+                resultadoLoterias = "agora é Lotofacil";
 
                 case loterias.Lotomania:
-                resultadoLoterias = "agora é quina";
+                resultadoLoterias = "agora é Lotomania";
 
                 case loterias.Timemania:
-                resultadoLoterias = "agora é quina";
+                resultadoLoterias = "agora é Timemania";
 
                 }
             });
