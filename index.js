@@ -5,6 +5,13 @@ const https = require('https');
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
+const loterias = {
+    Mega: 'Mega-Sena',
+    Lotofacil: 'Lotofacil',
+    Quina: 'Quina',
+    Lotomania: 'Lotomania',
+    Timemania: 'Timemania'
+}
 var resultadoLoterias = '';
 
 app.use(
@@ -21,15 +28,20 @@ app.post("/caixaWebhook", function(req, res) {
       req.body.queryResult.parameters &&
       req.body.queryResult.parameters.Loterias
         ? req.body.queryResult.parameters.Loterias
-        : "Erro";
-        if(jogo === 'Mega-Sena'){
-            var options = getOptions(jogo);
-           
-            getLoteria(options, function(err, result){
-                if(err){
-                    return console.log('Error ao acessar a API: ', err);
-                    reject();
-                }
+        : "Erro ao identificar a loteria";
+    
+    if(!loterias){
+        throw new Error('loterias não definida!');
+    }
+    
+        var options = getOptions(jogo);
+        getLoteria(options, function(err, result){
+            if(err){
+                throw new Error('Error ao acessar a API: ', err);
+                reject();
+            }
+            switch(jogo) {
+                case loterias.Mega:
                 var concurso = result.resultado.concurso;
                 var ganhadores = result.resultado.ganhadores;
                 var sorteados = result.resultado.resultado.split('-').sort();
@@ -53,13 +65,22 @@ app.post("/caixaWebhook", function(req, res) {
                     var premio = formataReal(result.resultado.valor);
                     resultadoLoterias = cabecalho+"<break time=\"1s\"/> <say-as interpret-as=\"cardinal\">"+ganhadores+"</say-as> apostas foram premiadas com valor de "+
                                premio+"</speak>";    
+                    }
+                case loterias.Quina:
+                resultadoLoterias = "agora é quina";
+
+                case loterias.Lotofacil:
+                resultadoLoterias = "agora é quina";
+
+                case loterias.Lotomania:
+                resultadoLoterias = "agora é quina";
+
+                case loterias.Timemania:
+                resultadoLoterias = "agora é quina";
+
                 }
             });
-        } else if(jogo === 'Quina') {
-            resultadoLoterias = "não deu., quina..";
-        } else{
-             resultadoLoterias = "não deu., outros..";
-        }
+       
     return res.json({   
             "fulfillmentText": resultadoLoterias,
             "fulfillmentMessages": [{
