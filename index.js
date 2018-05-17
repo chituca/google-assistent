@@ -23,7 +23,7 @@ app.use(bodyParser.json());
 
 app.post("/caixaWebhook", function(req, res) {
     var loteriaSelecionada = req.body.queryResult.parameters.Loterias;
-   var resultadoLoterias = '';
+
         var options = getOptions(loteriaSelecionada);
         
         getLoteria(options, function(err, result){
@@ -33,27 +33,27 @@ app.post("/caixaWebhook", function(req, res) {
             }
             switch(loteriaSelecionada) {
                 case loterias.Mega:
-                resultadoLoterias = "agora é Lotofacil...2";
+                loteriaSelecionada = "agora é Lotofacil...2";
                 break;
 
                 case loterias.Lotofacil:
-                resultadoLoterias = "agora é Lotofacil...2";
+                loteriaSelecionada = "agora é Lotofacil...2";
                 break;
 
                 case loterias.Quina:
-                resultadoLoterias = "agora é Quina ...3";
+                loteriaSelecionada = "agora é Quina ...3";
                 break;
 
                 case loterias.Lotomania:
-                resultadoLoterias = "agora é Lotomania...4";
+                loteriaSelecionada = "agora é Lotomania...4";
                 break;
 
                 case loterias.Timemania:
-                resultadoLoterias = "agora é Timemania...5";
+                loteriaSelecionada = "agora é Timemania...5";
                 break;
 
                 default:
-                resultadoLoterias = "loteria não localizada";
+                loteriaSelecionada = "loteria não localizada";
                 
                 }
             });
