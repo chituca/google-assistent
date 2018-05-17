@@ -65,7 +65,7 @@ app.post("/caixaWebhook", function(req, res) {
                    apostasTexto = "aposta foi premiada";
                }
            retorno = cabecalho+"<break time=\"1s\"/> <say-as interpret-as=\"cardinal\">"+ganhadores+
-           "</say-as>"+apostasTexto+"com valor de "+premio+"</speak>";    
+           "</say-as>"+apostasTexto+" com valor de "+premio+"</speak>";    
            }
        //--------
        return res.json({   
