@@ -35,16 +35,17 @@ app.post("/caixaWebhook", function(req, res) {
             throw new Error('Error ao acessar a API: ', err);
             reject();
        }
-                
-             
-    });
-    return res.json({   
+    
+       return res.json({   
             "fulfillmentText": result,
             "fulfillmentMessages": [{
-              "text": {"text":[result]}
+            "text": {"text":[result]}
             }],
-          "source": "caixa.gov.br"
+            "source": "caixa.gov.br"
+        });
+             
     });
+   
   });
 
 function getLoteria(options, cb){
