@@ -6,11 +6,11 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
 const loterias = {
-    Mega: 'Mega-Sena',
-    Lotofacil: 'Lotofacil',
-    Quina: 'Quina',
-    Lotomania: 'Lotomania',
-    Timemania: 'Timemania'
+    Mega: "Mega-Sena",
+    Lotofacil: "Lotofacil",
+    Quina: "Quina",
+    Lotomania: "Lotomania",
+    Timemania: "Timemania"
 }
 
 app.use(
