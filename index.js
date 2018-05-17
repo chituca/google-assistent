@@ -35,6 +35,7 @@ app.post("/caixaWebhook", function(req, res) {
     }
     
         var options = getOptions(jogo);
+        
         getLoteria(options, function(err, result){
             if(err){
                 throw new Error('Error ao acessar a API: ', err);
@@ -42,22 +43,51 @@ app.post("/caixaWebhook", function(req, res) {
             }
             switch(jogo) {
                 case loterias.Mega:
-                 resultadoLoterias = "agora é Mega-Sena";
-                    
+                var concurso = result.resultado.concurso;
+                var ganhadores = result.resultado.ganhadores;
+                var sorteados = result.resultado.resultado.split('-').sort();
+                var dataSorteio = formata_data(result.resultado.data);
+                var dataProximo = formata_data(result.resultado.DT_PROXIMO_CONCURSO);
+                var cabecalho = "<speak>ok <break time=\"1s\"/>, para o concurso "+concurso+" foram sorteados: " +
+                "<say-as interpret-as=\"cardinal\">"+sorteados[0]+"</say-as>,"+
+                "<say-as interpret-as=\"cardinal\">"+sorteados[1]+"</say-as>,"+
+                "<say-as interpret-as=\"cardinal\">"+sorteados[2]+"</say-as>,"+
+                "<say-as interpret-as=\"cardinal\">"+sorteados[3]+"</say-as>,"+
+                "<say-as interpret-as=\"cardinal\">"+sorteados[4]+"</say-as> e"+
+                "<say-as interpret-as=\"cardinal\">"+sorteados[5]+"</say-as>,";
+
+                if(ganhadores === 0) {
+                    var estimativa = formataReal(result.resultado.VR_ESTIMATIVA);
+                    var acumulado = formataReal(result.resultado.valor_acumulado1);
+                    resultadoLoterias = cabecalho+"<break time=\"1s\"/>o prêmio acumulou e a estimativa para o próximo concurso, em "+dataProximo+
+                    ", é de "+ estimativa + " <break time=\"1s\"/>, o valor acumulado para o próximo concurso é de "+acumulado+".</speak>";
+                
+                    } else {
+                    var premio = formataReal(result.resultado.valor);
+                    resultadoLoterias = cabecalho+"<break time=\"1s\"/> <say-as interpret-as=\"cardinal\">"+ganhadores+"</say-as> apostas foram premiadas com valor de "+
+                               premio+"</speak>";    
+                    }
+                break;
+
                 case loterias.Quina:
-                resultadoLoterias = "agora é Quina";
+                resultadoLoterias = "agora é quina";
+                break;
 
                 case loterias.Lotofacil:
                 resultadoLoterias = "agora é Lotofacil";
+                break;
 
                 case loterias.Lotomania:
                 resultadoLoterias = "agora é Lotomania";
+                break;
 
                 case loterias.Timemania:
                 resultadoLoterias = "agora é Timemania";
+                break;
 
                 default:
-                resultadoLoterias = "Jogo não localizado";
+                resultadoLoterias = "loteria não localizada";
+                break;
                 }
             });
        
