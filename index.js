@@ -22,7 +22,7 @@ app.post("/caixaWebhook", function(req, res) {
       req.body.queryResult.parameters.Loterias
         ? req.body.queryResult.parameters.Loterias
         : "Erro";
-        if(jogo = 'Mega-Sena'){
+        if(jogo == 'Mega-Sena'){
             var options = getOptions(jogo);
            
             getLoteria(options, function(err, result){
