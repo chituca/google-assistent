@@ -28,7 +28,7 @@ app.post("/caixaWebhook", function(req, res) {
       req.body.queryResult.parameters.Loterias
         ? req.body.queryResult.parameters.Loterias
         : "Erro ao identificar a loteria";
-
+    var retorno
     if(!loteriaSelecionada){
         throw new Error('loterias não definida!');
     }
@@ -57,7 +57,7 @@ app.post("/caixaWebhook", function(req, res) {
                 if(ganhadores === 0) {
                     var estimativa = formataReal(result.resultado.VR_ESTIMATIVA);
                     var acumulado = formataReal(result.resultado.valor_acumulado1);
-                    loteriaSelecionada = cabecalho+"<break time=\"1s\"/>o prêmio acumulou e a estimativa para o próximo concurso, em "+dataProximo+
+                    retorno = cabecalho+"<break time=\"1s\"/>o prêmio acumulou e a estimativa para o próximo concurso, em "+dataProximo+
                     ", é de "+ estimativa + " <break time=\"1s\"/>, o valor acumulado para o próximo concurso é de "+acumulado+".</speak>";
                 
                     } else {
@@ -68,16 +68,16 @@ app.post("/caixaWebhook", function(req, res) {
                         } else {
                             apostasTexto = "aposta foi premiada";
                         }
-                    loteriaSelecionada = cabecalho+"<break time=\"1s\"/> <say-as interpret-as=\"cardinal\">"+ganhadores+
+                    retorno = cabecalho+"<break time=\"1s\"/> <say-as interpret-as=\"cardinal\">"+ganhadores+
                     "</say-as>"+apostasTexto+"com valor de "+premio+"</speak>";    
                     }
              
             });
        
     return res.json({   
-            "fulfillmentText": loteriaSelecionada,
+            "fulfillmentText": retorno,
             "fulfillmentMessages": [{
-              "text": {"text":[loteriaSelecionada]}
+              "text": {"text":[retorno]}
             }
   
           ],
