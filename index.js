@@ -31,7 +31,7 @@ app.post("/caixaWebhook", function(req, res) {
                 reject();
             }
             switch(String(resultado)) {
-                case loterias.Mega:
+                case "Mega-Sena":
                      loteriaSelecionada = 'agora é Mega-Sena...';
                      break;
 
