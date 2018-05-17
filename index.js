@@ -79,7 +79,7 @@ app.post("/caixaWebhook", function(req, res) {
     return res.json({   
             "fulfillmentText": retorno,
             "fulfillmentMessages": [{
-              "text": {"text":["retorno 2"]}
+              "text": {"text":[retorno]}
             }
   
           ],
