@@ -23,8 +23,7 @@ app.use(bodyParser.json());
 
 app.post("/caixaWebhook", function(req, res) {
     var loteriaSelecionada = req.body.queryResult.parameters.Loterias;
-  
-        var options = getOptions(loteriaSelecionada);
+    var options = getOptions(loteriaSelecionada);
         
         getLoteria(options, function(err, result){
             if(err){
@@ -59,9 +58,9 @@ app.post("/caixaWebhook", function(req, res) {
             });
        
     return res.json({   
-            "fulfillmentText": loteriaSelecionada,
+            "fulfillmentText": "não sei mais..."+loteriaSelecionada,
             "fulfillmentMessages": [{
-              "text": {"text":[loteriaSelecionada]}
+              "text": {"text":["não entendo..." +loteriaSelecionada]}
             }
   
           ],
