@@ -22,7 +22,7 @@ app.use(
 app.use(bodyParser.json());
 
 app.post("/caixaWebhook", function(req, res) {
-    var loteriaSelecionada = req.body.queryResult.parameters.Loterias;
+    var loteriaSelecionada = String(req.body.queryResult.parameters.Loterias);
     let options = getOptions(loteriaSelecionada);
     let resultado = loteriaSelecionada;
         getLoteria(options, function(err, result){
@@ -30,7 +30,7 @@ app.post("/caixaWebhook", function(req, res) {
                 throw new Error('Error ao acessar a API: ', err);
                 reject();
             }
-            switch(String(resultado)) {
+            switch(resultado) {
                 case "Mega-Sena":
                      loteriaSelecionada = 'agora é Mega-Sena...';
                      break;
