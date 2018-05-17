@@ -30,7 +30,7 @@ app.post("/caixaWebhook", function(req, res) {
         ? req.body.queryResult.parameters.Loterias
         : "Erro ao identificar a loteria";
     
-    if(!loterias){
+    if(!jogo){
         throw new Error('loterias não definida!');
     }
     
