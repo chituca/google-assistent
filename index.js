@@ -22,8 +22,8 @@ app.use(
 app.use(bodyParser.json());
 
 app.post("/caixaWebhook", function(req, res) {
-    var loteriaSelecionada = req.body.queryResult.parameters.Loterias;
-    var options = getOptions(loteriaSelecionada);
+    let loteriaSelecionada = req.body.queryResult.parameters.Loterias;
+    let options = getOptions(loteriaSelecionada);
         
         getLoteria(options, function(err, result){
             if(err){
