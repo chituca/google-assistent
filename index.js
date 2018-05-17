@@ -22,7 +22,7 @@ app.post("/caixaWebhook", function(req, res) {
       req.body.queryResult.parameters.Loterias
         ? req.body.queryResult.parameters.Loterias
         : "Erro";
-        if(jogo == 'Mega-Sena'){
+        if(jogo === 'Mega-Sena'){
             var options = getOptions(jogo);
            
             getLoteria(options, function(err, result){
@@ -55,8 +55,10 @@ app.post("/caixaWebhook", function(req, res) {
                                premio+"</speak>";    
                 }
             });
-        } else {
-            resultadoLoterias = "não deu...";
+        } else if(jogo === 'Quina') {
+            resultadoLoterias = "não deu., quina..";
+        } else{
+             resultadoLoterias = "não deu., outros..";
         }
     return res.json({   
             "fulfillmentText": resultadoLoterias,
