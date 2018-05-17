@@ -55,6 +55,8 @@ app.post("/caixaWebhook", function(req, res) {
                                premio+"</speak>";    
                 }
             });
+        } else {
+            resultadoLoterias = "não deu";
         }
     return res.json({   
             "fulfillmentText": resultadoLoterias,
