@@ -35,11 +35,11 @@ app.post("/caixaWebhook", function(req, res) {
             throw new Error('Error ao acessar a API: ', err);
             reject();
        }
-    
+       let concurso = result.resultado.concurso;
        return res.json({   
         "fulfillmentText": "<speak>" + 
-        "ok <break time=\"1s\"/>, os números sorteados foram: " +
-        "06 <say-as interpret-as=\"cardinal\">12</say-as> <say-as interpret-as=\"cardinal\">22</say-as>"+
+        "ok <break time=\"1s\"/>, os números sorteados foram: " +concurso+
+        " 06 <say-as interpret-as=\"cardinal\">12</say-as> <say-as interpret-as=\"cardinal\">22</say-as>"+
         "<say-as interpret-as=\"cardinal\">28</say-as> <say-as interpret-as=\"cardinal\">31</say-as>"+
         "<say-as interpret-as=\"cardinal\">44</say-as><break time=\"1s\"/>"+
         "\n a estimativa de prêmio para o próximo concurso, " +
