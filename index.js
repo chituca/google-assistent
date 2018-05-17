@@ -38,32 +38,6 @@ app.post("/caixaWebhook", function(req, res) {
                 throw new Error('Error ao acessar a API: ', err);
                 reject();
             }
-            switch(loteriaSelecionada) {
-                case loterias.Mega:
-                 resultadoLoterias = "agora é Mega-sena";
-                break;
-
-                case loterias.Lotofacil:
-                resultadoLoterias = "agora é Lotofacil";
-                break;
-
-                case loterias.Quina:
-                resultadoLoterias = "agora é Quina";
-                break;
-
-                case loterias.Lotomania:
-                resultadoLoterias = "agora é Lotomania";
-                break;
-
-                case loterias.Timemania:
-                resultadoLoterias = "agora é Timemania";
-                break;
-
-                default:
-                resultadoLoterias = "loteria não localizada";
-                break;
-                }
-            loteriaSelecionada = '';
             });
        
     return res.json({   
