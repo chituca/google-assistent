@@ -30,11 +30,11 @@ app.post("/caixaWebhook", function(req, res) {
                 throw new Error('Error ao acessar a API: ', err);
                 reject();
             }
-           if (loteriaSelecionada === "Mega-Sena") {
+       
                 
                loteriaSelecionada = 'agora é Mega-Sena...';
                 
-                }
+          
             });
        
     return res.json({   
