@@ -23,12 +23,7 @@ app.use(
 app.use(bodyParser.json());
 
 app.post("/caixaWebhook", function(req, res) {
-    var jogo =
-      req.body.queryResult &&
-      req.body.queryResult.parameters &&
-      req.body.queryResult.parameters.Loterias
-        ? req.body.queryResult.parameters.Loterias
-        : "Erro ao identificar a loteria";
+    var jogo = req.body.queryResult.parameters.Loterias;
 
     let loteriaSelecionada = jogo
 
