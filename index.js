@@ -63,7 +63,7 @@ app.post("/caixaWebhook", function(req, res) {
                 resultadoLoterias = "loteria não localizada";
                 break;
                 }
-            loteriaSelecionada = null;
+            loteriaSelecionada = '';
             });
        
     return res.json({   
