@@ -23,14 +23,8 @@ app.use(
 app.use(bodyParser.json());
 
 app.post("/caixaWebhook", function(req, res) {
-    var jogo = req.body.queryResult.parameters.Loterias;
-
-    let loteriaSelecionada = jogo
-
-    if(!loteriaSelecionada){
-        throw new Error('loterias não definida!');
-    }
-    
+    var loteriaSelecionada = req.body.queryResult.parameters.Loterias;
+  
         var options = getOptions(loteriaSelecionada);
         
         getLoteria(options, function(err, result){
@@ -40,7 +34,7 @@ app.post("/caixaWebhook", function(req, res) {
             }
             });
        
-    return res.json({   
+            return res.json({   
             "fulfillmentText": resultadoLoterias,
             "fulfillmentMessages": [{
               "text": {"text":[resultadoLoterias]}
