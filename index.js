@@ -12,7 +12,6 @@ const loterias = {
     Lotomania: 'Lotomania',
     Timemania: 'Timemania'
 }
-var resultadoLoterias = '';
 
 app.use(
     bodyParser.urlencoded({
@@ -35,9 +34,9 @@ app.post("/caixaWebhook", function(req, res) {
             });
        
             return res.json({   
-            "fulfillmentText": resultadoLoterias,
+            "fulfillmentText": loteriaSelecionada,
             "fulfillmentMessages": [{
-              "text": {"text":[resultadoLoterias]}
+              "text": {"text":[loteriaSelecionada]}
             }
   
           ],
