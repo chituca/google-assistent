@@ -12,7 +12,7 @@ const loterias = {
     Lotomania: 'Lotomania',
     Timemania: 'Timemania'
 };
-
+var retorno;
 app.use(
     bodyParser.urlencoded({
       extended: true
@@ -36,7 +36,6 @@ app.post("/caixaWebhook", function(req, res) {
             reject();
        }
        
-       let retorno;
        switch(loteriaSelecionada){
            case loterias.Mega:
            let concurso = result.resultado.concurso;
