@@ -32,7 +32,7 @@ app.post("/caixaWebhook", function(req, res) {
             }
        
                 
-               loteriaSelecionada = 'agora é Mega-Sena...';
+               loteriaSelecionada == 'agora é Mega-Sena...';
                 
           
             });
