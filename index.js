@@ -22,7 +22,7 @@ app.use(
 app.use(bodyParser.json());
 
 app.post("/caixaWebhook", function(req, res) {
-    let loteriaSelecionada = req.body.queryResult.parameters.Loterias;
+    var loteriaSelecionada = req.body.queryResult.parameters.Loterias;
     let options = getOptions(loteriaSelecionada);
     let resultado = loteriaSelecionada;
         getLoteria(options, function(err, result){
@@ -32,7 +32,7 @@ app.post("/caixaWebhook", function(req, res) {
             }
             switch(resultado) {
                 case loterias.Mega:
-                     loteriaSelecionada = "agora é Mega-Sena...2";
+                     loteriaSelecionada = 'agora é Mega-Sena...';
                      break;
 
                 case loterias.Lotofacil:
