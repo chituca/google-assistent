@@ -23,7 +23,7 @@ app.use(bodyParser.json());
 
 app.post("/caixaWebhook", function(req, res) {
     var loteriaSelecionada = req.body.queryResult.parameters.Loterias;
-  
+   var resultadoLoterias = '';
         var options = getOptions(loteriaSelecionada);
         
         getLoteria(options, function(err, result){
@@ -31,12 +31,37 @@ app.post("/caixaWebhook", function(req, res) {
                 throw new Error('Error ao acessar a API: ', err);
                 reject();
             }
+            switch(loteriaSelecionada) {
+                case loterias.Mega:
+                resultadoLoterias = "agora é Lotofacil...2";
+                break;
+
+                case loterias.Lotofacil:
+                resultadoLoterias = "agora é Lotofacil...2";
+                break;
+
+                case loterias.Quina:
+                resultadoLoterias = "agora é Quina ...3";
+                break;
+
+                case loterias.Lotomania:
+                resultadoLoterias = "agora é Lotomania...4";
+                break;
+
+                case loterias.Timemania:
+                resultadoLoterias = "agora é Timemania...5";
+                break;
+
+                default:
+                resultadoLoterias = "loteria não localizada";
+                
+                }
             });
        
             return res.json({   
-            "fulfillmentText": loteriaSelecionada,
+            "fulfillmentText": resultadoLoterias,
             "fulfillmentMessages": [{
-              "text": {"text":[loteriaSelecionada]}
+              "text": {"text":[resultadoLoterias]}
             }
   
           ],
