@@ -208,7 +208,7 @@ function getLotofacil(result) {
 function getLotomania(result) {
 
     let concurso = result.resultado.co_concurso;
-    let ganhadores = result.resultado.qt_ganhador_faixa1;
+    let ganhadores = result.resultado.qt_ganhadores_faixa1;
     let sorteados = result.resultado.de_resultado.split('-').sort();
     let dataSorteio = util.formataData(result.resultado.dt_inclusao);
     let dataProximo = util.formataData(result.resultado.DT_PROXIMO_CONCURSO);
