@@ -91,17 +91,6 @@ function getOptions(jogo){
     return options;
 }
 
-///*** Chama API de Loterias ***//
-/*function getOptions(jogo){
-    var options = {
-    host: 'api.caixa.gov.br',
-    port: 8443,
-    path: '/loterias/v2/resultados/'+jogo+'?concurso=',
-    method: 'GET',
-    rejectUnauthorized: false
-    };
-    return options;
-}*/
 //chama Mega-Sena
 function getMegaSena(result) {
 
@@ -150,8 +139,7 @@ function getQuina(result) {
     "<say-as interpret-as=\"cardinal\">"+sorteados[1]+"</say-as>,"+
     "<say-as interpret-as=\"cardinal\">"+sorteados[2]+"</say-as>,"+
     "<say-as interpret-as=\"cardinal\">"+sorteados[3]+"</say-as>,"+
-    "<say-as interpret-as=\"cardinal\">"+sorteados[4]+"</say-as> e"+
-    "<say-as interpret-as=\"cardinal\">"+sorteados[5]+"</say-as>,";
+    "<say-as interpret-as=\"cardinal\">"+sorteados[4]+"</say-as> e";
 
     if(ganhadores === 0) {
         var estimativa = util.formataReal(result.resultado.VR_ESTIMATIVA);
@@ -160,7 +148,7 @@ function getQuina(result) {
         ", é de "+ estimativa + " <break time=\"1s\"/>, o valor acumulado para o próximo concurso é de "+acumulado+".</speak>";
     
         } else {
-        var premio = util.formataReal(result.resultado.valor);
+        var premio = util.formataReal(result.resultado.valor1);
         var apostasTexto = '';
             if(ganhadores > 1){
                 apostasTexto = "apostas foram premiadas";
