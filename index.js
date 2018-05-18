@@ -98,7 +98,7 @@ function getMegaSena(result) {
     let ganhadores = result.resultado.ganhadores;
     let sorteados = result.resultado.resultado.split('-').sort();
     let dataSorteio = util.formataData(result.resultado.data);
-    let dataProximo = formata_data(result.resultado.DT_PROXIMO_CONCURSO);
+    let dataProximo = util.formataData(result.resultado.DT_PROXIMO_CONCURSO);
     let cabecalho = "<speak>ok <break time=\"1s\"/>, para o concurso "+concurso+" foram sorteados: " +
     "<say-as interpret-as=\"cardinal\">"+sorteados[0]+"</say-as>,"+
     "<say-as interpret-as=\"cardinal\">"+sorteados[1]+"</say-as>,"+
@@ -108,13 +108,13 @@ function getMegaSena(result) {
     "<say-as interpret-as=\"cardinal\">"+sorteados[5]+"</say-as>,";
 
     if(ganhadores === 0) {
-        var estimativa = formataReal(result.resultado.VR_ESTIMATIVA);
-        var acumulado = formataReal(result.resultado.valor_acumulado1);
+        var estimativa = util.formataReal(result.resultado.VR_ESTIMATIVA);
+        var acumulado = util.formataReal(result.resultado.valor_acumulado1);
         retorno = cabecalho+"<break time=\"1s\"/>o prêmio acumulou e a estimativa para o próximo concurso, em "+dataProximo+
         ", é de "+ estimativa + " <break time=\"1s\"/>, o valor acumulado para o próximo concurso é de "+acumulado+".</speak>";
     
         } else {
-        var premio = formataReal(result.resultado.valor);
+        var premio = util.formataReal(result.resultado.valor);
         var apostasTexto = '';
             if(ganhadores > 1){
                 apostasTexto = "apostas foram premiadas";
@@ -143,8 +143,8 @@ function getQuina(result) {
     let concurso = result.resultado.concurso;
     let ganhadores = result.resultado.ganhadores;
     let sorteados = result.resultado.resultado.split('-').sort();
-    let dataSorteio = formata_data(result.resultado.data);
-    let dataProximo = formata_data(result.resultado.DT_PROXIMO_CONCURSO);
+    let dataSorteio = util.formataData(result.resultado.data);
+    let dataProximo = util.formataData(result.resultado.DT_PROXIMO_CONCURSO);
     let cabecalho = "<speak>ok <break time=\"1s\"/>, para o concurso "+concurso+" foram sorteados: " +
     "<say-as interpret-as=\"cardinal\">"+sorteados[0]+"</say-as>,"+
     "<say-as interpret-as=\"cardinal\">"+sorteados[1]+"</say-as>,"+
@@ -154,13 +154,13 @@ function getQuina(result) {
     "<say-as interpret-as=\"cardinal\">"+sorteados[5]+"</say-as>,";
 
     if(ganhadores === 0) {
-        var estimativa = formataReal(result.resultado.VR_ESTIMATIVA);
-        var acumulado = formataReal(result.resultado.valor_acumulado1);
+        var estimativa = util.formataReal(result.resultado.VR_ESTIMATIVA);
+        var acumulado = util.formataReal(result.resultado.valor_acumulado1);
         retorno = cabecalho+"<break time=\"1s\"/>o prêmio acumulou e a estimativa para o próximo concurso, em "+dataProximo+
         ", é de "+ estimativa + " <break time=\"1s\"/>, o valor acumulado para o próximo concurso é de "+acumulado+".</speak>";
     
         } else {
-        var premio = formataReal(result.resultado.valor);
+        var premio = util.formataReal(result.resultado.valor);
         var apostasTexto = '';
             if(ganhadores > 1){
                 apostasTexto = "apostas foram premiadas";
@@ -171,28 +171,6 @@ function getQuina(result) {
         "</say-as>"+apostasTexto+" com valor de "+premio+"</speak>";    
         }
 }
-
-function formataReal(n) {
-    var valor = parseFloat(n);
-        n =  String(valor.toFixed(2)); 
-    var v= n.replace(/\D/g,"").replace(/(\d{2})$/,",$1").replace(/(\d+)(\d{3},\d{2})$/g,"$1.$2");
-    var qtdLoop = (v.length-3)/3;
-    var count = 0;
-    
-    while (qtdLoop > count)
-    
-    {
-    count++;
-    v=v.replace(/(\d+)(\d{3}.*)/,"$1.$2"); 
-    }
-    return "R$ " + v;
-    }
-    
-function formata_data(str) {
-     var data_siopi = str.replace(/[^\d]+/g, '');
-     return data_siopi.substr(6,2)+"/"+data_siopi.substr(4,2)+"/"+data_siopi.substr(0,4);
-    }
-
 app.listen(process.env.PORT || 8000, function() {
     console.log("Caixa server google assistente rodando!");
   });
