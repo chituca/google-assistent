@@ -11,7 +11,7 @@ module.exports = {
     }
     return "R$ " + v;
     },
-    formataData: function(){
+    formataData: function(str){
         var data_siopi = str.replace(/[^\d]+/g, '');
      return data_siopi.substr(6,2)+"/"+data_siopi.substr(4,2)+"/"+data_siopi.substr(0,4);
     }
