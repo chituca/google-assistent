@@ -1,6 +1,6 @@
 'use strict';
 
-var util = require("util");
+var util = require("./util");
 const http = require('http');
 const https = require('https');
 const express = require("express");
@@ -97,7 +97,7 @@ function getMegaSena(result) {
     let concurso = result.resultado.concurso;
     let ganhadores = result.resultado.ganhadores;
     let sorteados = result.resultado.resultado.split('-').sort();
-    let dataSorteio = formata_data(result.resultado.data);
+    let dataSorteio = util.formataData(result.resultado.data);
     let dataProximo = formata_data(result.resultado.DT_PROXIMO_CONCURSO);
     let cabecalho = "<speak>ok <break time=\"1s\"/>, para o concurso "+concurso+" foram sorteados: " +
     "<say-as interpret-as=\"cardinal\">"+sorteados[0]+"</say-as>,"+
