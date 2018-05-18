@@ -40,7 +40,7 @@ app.post("/caixaWebhook", function(req, res) {
        
        switch(loteriaSelecionada){
            case loterias.Mega:
-                lot.getMegaSena(result);
+                retorno = lot.getMegaSena(result);
                 break;
             case loterias.Quina:      
                 getQuina(result);
