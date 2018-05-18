@@ -1,5 +1,4 @@
 'use strict';
-
 var util = require("./util");
 const http = require('http');
 const https = require('https');
