@@ -171,7 +171,7 @@ function getLotofacil(result) {
     let sorteados = result.resultado.de_resultado.split('-').sort();
     let dataSorteio = util.formataData(result.resultado.dt_inclusao);
     let dataProximo = util.formataData(result.resultado.DT_PROXIMO_CONCURSO);
-    let cabecalho = "<speak>tudo bem <break time=\"1s\"/>, para o concurso "+concurso+" foram sorteados: " +
+    let cabecalho = "<speak>vamos lá<break time=\"1s\"/>, para o concurso "+concurso+" foram sorteados: " +
     "<say-as interpret-as=\"cardinal\">"+sorteados[0]+"</say-as>,"+"<say-as interpret-as=\"cardinal\">"+sorteados[1]+"</say-as>,"+
     "<say-as interpret-as=\"cardinal\">"+sorteados[2]+"</say-as>,"+"<say-as interpret-as=\"cardinal\">"+sorteados[3]+"</say-as>,"+
     "<say-as interpret-as=\"cardinal\">"+sorteados[4]+"</say-as>,"+"<say-as interpret-as=\"cardinal\">"+sorteados[5]+"</say-as>,"+
@@ -183,7 +183,7 @@ function getLotofacil(result) {
 
     if(ganhadores === 0) {
         var estimativa = util.formataReal(result.resultado.VR_ESTIMATIVA);
-        var acumulado = util.formataReal(result.resultado.vr_acumulado_faixa1);
+        var acumulado = util.formataReal(result.resultado.VR_ACUMULADO_ESPECIAL);
         retorno = cabecalho+"<break time=\"1s\"/>o prêmio acumulou e a estimativa para o próximo concurso, em "+dataProximo+
         ", é de "+ estimativa + " <break time=\"1s\"/>, o valor acumulado para o próximo concurso é de "+acumulado+".</speak>";
     
