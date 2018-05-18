@@ -1,5 +1,5 @@
 module.exports = {
-    functionformataReal: function(n) {
+    formataReal: function(n) {
         var valor = parseFloat(n);
     n = String(valor.toFixed(2));
     var v = n.replace(/\D/g, "").replace(/(\d{2})$/, ",$1").replace(/(\d+)(\d{3},\d{2})$/g, "$1.$2");
