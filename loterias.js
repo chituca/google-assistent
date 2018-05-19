@@ -152,26 +152,20 @@ module.exports = {
     getTimemania: function (result) {
 
     let retorno;
-    let concurso = result.resultado.co_concurso;
-    let ganhadores = result.resultado.qt_ganhadores_faixa1;
+    let concurso = result.resultado.NU_CONCURSO;
+    let ganhadores = result.resultado.QT_GANHADOR_FAIXA_1;
     let sorteados = result.resultado.DE_RESULTADO.split('-').sort();
-    let dataSorteio = util.formataData(result.resultado.DT_VIGENCIA);
+    let dataSorteio = util.formataData(result.resultado.DT_APURACAO);
     let dataProximo = util.formataData(result.resultado.DT_PROXIMO_CONCURSO);
-    let cabecalho = "<speak>A lotomania <break time=\"1s\"/> para o concurso "+concurso+" foram sorteados: " +
+    let cabecalho = "<speak>Para Timemania <break time=\"1s\"/> no concurso "+concurso+" os números sorteados foram: " +
     "<say-as interpret-as=\"cardinal\">"+sorteados[0]+"</say-as>,"+"<say-as interpret-as=\"cardinal\">"+sorteados[1]+"</say-as>,"+
     "<say-as interpret-as=\"cardinal\">"+sorteados[2]+"</say-as>,"+"<say-as interpret-as=\"cardinal\">"+sorteados[3]+"</say-as>,"+
     "<say-as interpret-as=\"cardinal\">"+sorteados[4]+"</say-as>,"+"<say-as interpret-as=\"cardinal\">"+sorteados[5]+"</say-as>,"+
-    "<say-as interpret-as=\"cardinal\">"+sorteados[6]+"</say-as>,"+"<say-as interpret-as=\"cardinal\">"+sorteados[7]+"</say-as>,"+
-    "<say-as interpret-as=\"cardinal\">"+sorteados[8]+"</say-as>,"+"<say-as interpret-as=\"cardinal\">"+sorteados[9]+"</say-as>,"+
-    "<say-as interpret-as=\"cardinal\">"+sorteados[10]+"</say-as>,"+"<say-as interpret-as=\"cardinal\">"+sorteados[11]+"</say-as>,"+
-    "<say-as interpret-as=\"cardinal\">"+sorteados[12]+"</say-as>,"+"<say-as interpret-as=\"cardinal\">"+sorteados[13]+"</say-as>,"+
-    "<say-as interpret-as=\"cardinal\">"+sorteados[14]+"</say-as>,"+"<say-as interpret-as=\"cardinal\">"+sorteados[15]+"</say-as>,"+
-    "<say-as interpret-as=\"cardinal\">"+sorteados[16]+"</say-as>,"+"<say-as interpret-as=\"cardinal\">"+sorteados[17]+"</say-as>,"+
-    "<say-as interpret-as=\"cardinal\">"+sorteados[18]+"</say-as>,"+"<say-as interpret-as=\"cardinal\">"+sorteados[19]+"</say-as> e";
+    "</say-as>,"+"<say-as interpret-as=\"cardinal\">"+sorteados[6]+"</say-as> e";
 
     if(ganhadores === 0) {
-        var estimativa = util.formataReal(result.resultado.VR_ESTIMATIVA);
-        var acumulado = util.formataReal(result.resultado.vr_acumulado_faixa1);
+        var estimativa = util.formataReal(result.resultado.VR_ESTIMATIVA_FAIXA_1);
+        var acumulado = util.formataReal(result.resultado.VR_ACUMULADO_FAIXA_1);
         return retorno = cabecalho+"<break time=\"1s\"/>o prêmio acumulou e a estimativa para o próximo concurso, em "+dataProximo+
         ", é de "+ estimativa + " <break time=\"1s\"/>, o valor acumulado para o próximo concurso é de "+acumulado+".</speak>";
     
