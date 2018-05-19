@@ -155,7 +155,7 @@ module.exports = {
     let concurso = result.resultado.co_concurso;
     let ganhadores = result.resultado.qt_ganhadores_faixa1;
     let sorteados = result.resultado.DE_RESULTADO.split('-').sort();
-    let dataSorteio = util.formataData(result.resultado.dt_inclusao);
+    let dataSorteio = util.formataData(result.resultado.DT_VIGENCIA);
     let dataProximo = util.formataData(result.resultado.DT_PROXIMO_CONCURSO);
     let cabecalho = "<speak>A lotomania <break time=\"1s\"/> para o concurso "+concurso+" foram sorteados: " +
     "<say-as interpret-as=\"cardinal\">"+sorteados[0]+"</say-as>,"+"<say-as interpret-as=\"cardinal\">"+sorteados[1]+"</say-as>,"+
