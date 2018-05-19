@@ -180,5 +180,50 @@ module.exports = {
         return retorno = cabecalho+"<break time=\"1s\"/> <say-as interpret-as=\"cardinal\">"+ganhadores+
         "</say-as>"+apostasTexto+" com valor de "+premio+".</speak>";    
         }
+    },
+
+     //chama Mega-Sena
+     getDuplaSena: function (result) {
+        let retorno;
+        let concurso = result.resultado.concurso;
+        let ganhadores = result.resultado.ganhadores_sena1;
+        let ganhadores = result.resultado.ganhadores_sena2;
+        let sorteados = result.resultado.resultado_sorteio1.split('-').sort();
+        let sorteados2 = result.resultado.resultado_sorteio2.split('-').sort();
+        let dataSorteio = util.formataData(result.resultado.data);
+        let dataProximo = util.formataData(result.resultado.DATA_PROXIMO_CONCURSO);
+        let cabecalho = "para o concurso "+concurso+
+        " da Dupla-Sena <break time=\"1s\"/>os números sorteado do <say-as interpret-as=\"ordinal\">1</say-as>º sorteio são: " +
+        "<say-as interpret-as=\"cardinal\">"+sorteados[0]+"</say-as>,"+
+        "<say-as interpret-as=\"cardinal\">"+sorteados[1]+"</say-as>,"+
+        "<say-as interpret-as=\"cardinal\">"+sorteados[2]+"</say-as>,"+
+        "<say-as interpret-as=\"cardinal\">"+sorteados[3]+"</say-as>,"+
+        "<say-as interpret-as=\"cardinal\">"+sorteados[4]+"</say-as> e"+
+        "<say-as interpret-as=\"cardinal\">"+sorteados[5]+"</say-as>,"+
+        "<break time=\"2s\"/>e para o <say-as interpret-as=\"ordinal\">2</say-as>º sorteio foram: " +
+        "<say-as interpret-as=\"cardinal\">"+sorteados2[0]+"</say-as>,"+
+        "<say-as interpret-as=\"cardinal\">"+sorteados2[1]+"</say-as>,"+
+        "<say-as interpret-as=\"cardinal\">"+sorteados2[2]+"</say-as>,"+
+        "<say-as interpret-as=\"cardinal\">"+sorteados2[3]+"</say-as>,"+
+        "<say-as interpret-as=\"cardinal\">"+sorteados2[4]+"</say-as> e"+
+        "<say-as interpret-as=\"cardinal\">"+sorteados2[5]+"</say-as>,";
+
+        if(ganhadores === 0) {
+            var estimativa = util.formataReal(result.resultado.VALOR_ESTIMATIVA);
+            var acumulado = util.formataReal(result.resultado.valor_acumulado_sena1);
+            return retorno = cabecalho+"<break time=\"1s\"/>o prêmio acumulou e a estimativa para o próximo concurso, em "+dataProximo+
+            ", é de "+ estimativa + " <break time=\"1s\"/>, o valor acumulado para o próximo concurso é de "+acumulado+".</speak>";
+        
+            } else {
+            var premio = util.formataReal(result.resultado.valor_sena1);
+            var apostasTexto = '';
+                if(ganhadores > 1){
+                    apostasTexto = "apostas foram premiadas";
+                } else {
+                    apostasTexto = "aposta foi premiada";
+                }
+            return retorno = cabecalho+"<break time=\"1s\"/> <say-as interpret-as=\"cardinal\">"+ganhadores+
+            "</say-as>"+apostasTexto+" com valor de "+premio+"</speak>";    
+            }
     }
 }
