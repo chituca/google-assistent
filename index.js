@@ -11,7 +11,8 @@ const loterias = {
     Lotofacil: 'Lotofacil',
     Quina: 'Quina',
     Lotomania: 'Lotomania',
-    Timemania: 'Timemania'
+    Timemania: 'Timemania',
+    Dupla: 'Dupla-Sena'
 };
 
 app.use(
@@ -52,6 +53,9 @@ app.post("/caixaWebhook", function(req, res) {
                 break;
             case loterias.Timemania:      
                 retorno = lot.getTimemania(result);
+                break;
+            case loterias.Dupla:      
+                retorno = lot.getDuplaSena(result);
                 break;
             default:
                 retorno = "Loteria não localizada."
