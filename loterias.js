@@ -187,7 +187,7 @@ module.exports = {
         let retorno;
         let concurso = result.resultado.concurso;
         let ganhadores = result.resultado.ganhadores_sena1;
-        let ganhadores = result.resultado.ganhadores_sena2;
+        let ganhadores2 = result.resultado.ganhadores_sena2;
         let sorteados = result.resultado.resultado_sorteio1.split('-').sort();
         let sorteados2 = result.resultado.resultado_sorteio2.split('-').sort();
         let dataSorteio = util.formataData(result.resultado.data);
