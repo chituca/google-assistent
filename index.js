@@ -50,7 +50,7 @@ app.post("/caixaWebhook", function(req, res) {
             case loterias.Lotomania:      
                 retorno = lot.getLotomania(result);
                 break;
-            case loterias.Lotomania:      
+            case loterias.Timemania:      
                 retorno = lot.getTimemania(result);
                 break;
             default:
