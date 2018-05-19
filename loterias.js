@@ -55,7 +55,7 @@ module.exports = {
         if(ganhadores === 0) {
             var estimativa = util.formataReal(result.resultado.VR_ESTIMATIVA);
             var acumulado = util.formataReal(result.resultado.valor_acumulado1);
-            retorno = cabecalho+"<break time=\"1s\"/>o prêmio acumulou e a estimativa para o próximo concurso, em "+dataProximo+
+            return retorno = cabecalho+"<break time=\"1s\"/>o prêmio acumulou e a estimativa para o próximo concurso, em "+dataProximo+
             ", é de "+ estimativa + " <break time=\"1s\"/>, o valor acumulado para o próximo concurso é de "+acumulado+".</speak>";
         
             } else {
@@ -66,10 +66,10 @@ module.exports = {
                 } else {
                     apostasTexto = "aposta foi premiada";
                 }
-            retorno = cabecalho+"<break time=\"1s\"/> <say-as interpret-as=\"cardinal\">"+ganhadores+
+            return retorno = cabecalho+"<break time=\"1s\"/> <say-as interpret-as=\"cardinal\">"+ganhadores+
             "</say-as>"+apostasTexto+" com valor de "+premio+"</speak>";    
             }
     }
 
-    
+
 }
