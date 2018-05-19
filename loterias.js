@@ -1,7 +1,7 @@
 var util = require("./util");
 
 module.exports = {
-let retorno;
+var retorno;
     //chama Mega-Sena
     getMegaSena: function (result) {
         
