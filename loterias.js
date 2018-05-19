@@ -1,10 +1,10 @@
 var util = require("./util");
 
 module.exports = {
-
+let retorno;
     //chama Mega-Sena
     getMegaSena: function (result) {
-        let retorno;
+        
         let concurso = result.resultado.concurso;
         let ganhadores = result.resultado.ganhadores;
         let sorteados = result.resultado.resultado.split('-').sort();
