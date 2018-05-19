@@ -1,5 +1,5 @@
 'use strict';
-
+var lot = require("./loterias");
 var util = require("./util");
 const http = require('http');
 const https = require('https');
@@ -13,7 +13,7 @@ const loterias = {
     Lotomania: 'Lotomania',
     Timemania: 'Timemania'
 };
-var retorno;
+
 app.use(
     bodyParser.urlencoded({
       extended: true
@@ -29,13 +29,13 @@ app.post("/caixaWebhook", function(req, res) {
       req.body.queryResult.parameters.Loterias
         ? req.body.queryResult.parameters.Loterias
         : "Erro ao identificar a loteria";
-    
+    var retorno;
     var options = getOptions(loteriaSelecionada);
     getLoteria(options, function(err, result) {
         if(err){
             throw new Error('Error ao acessar a API: ', err);
             reject();
-       }
+        }
        
        switch(loteriaSelecionada){
             case loterias.Mega:
