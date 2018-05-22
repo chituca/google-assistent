@@ -7,15 +7,6 @@ const https = require('https');
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
-const loterias = {
-    Mega: 'Mega-Sena',
-    Lotofacil: 'Lotofacil',
-    Quina: 'Quina',
-    Lotomania: 'Lotomania',
-    Timemania: 'Timemania',
-    Dupla: 'Dupla-Sena',
-    Federal: 'Federal'
-};
 
 app.use(
     bodyParser.urlencoded({
@@ -41,25 +32,25 @@ app.post("/caixaWebhook", function(req, res) {
         }
        
        switch(loteriaSelecionada){
-            case loterias.Mega:
+            case config.loterias.Mega:
                 retorno = lot.getMegaSena(result);
                 break; 
-            case loterias.Quina:      
+            case config.loterias.Quina:      
                 retorno = lot.getQuina(result);
                 break;
-            case loterias.Lotofacil:      
+            case config.loterias.Lotofacil:      
                 retorno = lot.getLotofacil(result);
                 break;
-            case loterias.Lotomania:      
+            case config.loterias.Lotomania:      
                 retorno = lot.getLotomania(result);
                 break;
-            case loterias.Timemania:      
+            case config.loterias.Timemania:      
                 retorno = lot.getTimemania(result);
                 break;
-            case loterias.Dupla:      
+            case config.loterias.Dupla:      
                 retorno = lot.getDuplaSena(result);
                 break;
-            case loterias.Federal:      
+            case config.loterias.Federal:      
                 retorno = lot.getFederal(result);
                 break;
             default:
