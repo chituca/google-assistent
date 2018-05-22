@@ -238,13 +238,13 @@ module.exports = {
         let concurso = result.resultado.Extracao;
         let valorPrimeiro = util.formataReal(result.resultado.Valor);
         let dataSorteio = util.formataData(result.resultado.Data_Extracao);
-        let cabecalho = "<speak>para o concurso <say-as interpret-as=\"cardinal\">"+concurso+"</say-as>"+
+        let cabecalho = "<speak>para o concurso <say-as interpret-as=\"ordinal\">"+concurso+"</say-as>"+
         " da Loteria Federal <break time=\"1s\"/>os bilhetes premiados foram:\n" +
-        "<say-as interpret-as=\"cardinal\">1</say-as>: "+primeiroPremio+", \n"+
-        "<say-as interpret-as=\"cardinal\">2</say-as>: "+segundoPremio+",\n"+
-        "<say-as interpret-as=\"cardinal\">3</say-as>: "+terceiroPremio+", \n"+
-        "<say-as interpret-as=\"cardinal\">4</say-as>: "+quartoPremio+" e \n"+
-        "<say-as interpret-as=\"cardinal\">5</say-as>: "+quintoPremio+". \n";
+        "<say-as interpret-as=\"ordinal\">1</say-as>: "+primeiroPremio+", \n"+
+        "<say-as interpret-as=\"ordinal\">2</say-as>: "+segundoPremio+",\n"+
+        "<say-as interpret-as=\"ordinal\">3</say-as>: "+terceiroPremio+", \n"+
+        "<say-as interpret-as=\"ordinal\">4</say-as>: "+quartoPremio+" e \n"+
+        "<say-as interpret-as=\"ordinal\">5</say-as>: "+quintoPremio+". \n";
 
         return retorno = cabecalho+"<break time=\"1s\"/>O valor do primeiro prémio foi de "+valorPrimeiro+".</speak>";    
     }
