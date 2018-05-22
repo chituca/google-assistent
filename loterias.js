@@ -192,7 +192,7 @@ module.exports = {
         let sorteados2 = result.resultado.resultado_sorteio2.split('-').sort();
         let dataSorteio = util.formataData(result.resultado.data);
         let dataProximo = util.formataData(result.resultado.DATA_PROXIMO_CONCURSO);
-        let cabecalho = "para o concurso "+concurso+
+        let cabecalho = "<speak>para o concurso "+concurso+
         " da Dupla-Sena <break time=\"1s\"/>os números sorteado do <say-as interpret-as=\"ordinal\">1</say-as>º sorteio são: " +
         "<say-as interpret-as=\"cardinal\">"+sorteados[0]+"</say-as>,"+
         "<say-as interpret-as=\"cardinal\">"+sorteados[1]+"</say-as>,"+
@@ -236,16 +236,16 @@ module.exports = {
         let quartoPremio = result.resultado.Quarto_Premio;
         let quintoPremio = result.resultado.Quinto_Premio;
         let concurso = result.resultado.Extracao;
-        let valorPrimeiro = result.resultado.Valor;
+        let valorPrimeiro = util.formataReal(result.resultado.Valor);
         let dataSorteio = util.formataData(result.resultado.Data_Extracao);
-        let cabecalho = "para o concurso <say-as interpret-as=\"cardinal\">"+concurso+"</say-as>"+
+        let cabecalho = "<speak>para o concurso <say-as interpret-as=\"cardinal\">"+concurso+"</say-as>"+
         " da Loteria Federal <break time=\"1s\"/>os bilhetes premiados foram:\n" +
-        "<say-as interpret-as=\"ordinal\">1</say-as> <say-as interpret-as=\"cardinal\">: "+primeiroPremio+"</say-as>, \n"+
-        "<say-as interpret-as=\"ordinal\">2</say-as> <say-as interpret-as=\"cardinal\">: "+segundoPremio+"</say-as>,\n"+
-        "<say-as interpret-as=\"ordinal\">3</say-as> <say-as interpret-as=\"cardinal\">: "+terceiroPremio+"</say-as>, \n"+
-        "<say-as interpret-as=\"ordinal\">4</say-as> <say-as interpret-as=\"cardinal\">: "+quartoPremio+"</say-as> e \n"+
-        "<say-as interpret-as=\"ordinal\">5</say-as> <say-as interpret-as=\"cardinal\">: "+quintoPremio+"</say-as>. \n";
+        "<say-as interpret-as=\"cardinal\">1</say-as>: "+primeiroPremio+", \n"+
+        "<say-as interpret-as=\"cardinal\">2</say-as>: "+segundoPremio+",\n"+
+        "<say-as interpret-as=\"cardinal\">3</say-as>: "+terceiroPremio+", \n"+
+        "<say-as interpret-as=\"cardinal\">4</say-as>: "+quartoPremio+" e \n"+
+        "<say-as interpret-as=\"cardinal\">5</say-as>: "+quintoPremio+". \n";
 
-        return retorno = cabecalho+"<break time=\"1s\"/>O valor do primeiro prémio foi de"+valorPrimeiro+".</speak>";    
+        return retorno = cabecalho+"<break time=\"1s\"/>O valor do primeiro prémio foi de "+valorPrimeiro+".</speak>";    
     }
 }
