@@ -182,7 +182,7 @@ module.exports = {
         }
     },
 
-     //chama Mega-Sena
+     //chama Dupla-Sena
      getDuplaSena: function (result) {
         let retorno;
         let concurso = result.resultado.concurso;
@@ -225,5 +225,27 @@ module.exports = {
             return retorno = cabecalho+"<break time=\"1s\"/> <say-as interpret-as=\"cardinal\">"+ganhadores+
             "</say-as>"+apostasTexto+" com valor de "+premio+"</speak>";    
             }
+    },
+
+    //chama Loteria Federal
+    getFederal: function (result) {
+        let retorno;
+        let primeiroPremio = result.resultado.Primeiro_Premio;
+        let segundoPremio = result.resultado.Segundo_Premio;
+        let terceiroPremio = result.resultado.Terceiro_Premio;
+        let quartoPremio = result.resultado.Quarto_Premio;
+        let quintoPremio = result.resultado.Quinto_Premio;
+        let concurso = result.resultado.Extracao;
+        let valorPrimeiro = result.resultado.Valor;
+        let dataSorteio = util.formataData(result.resultado.Data_Extracao);
+        let cabecalho = "para o concurso <say-as interpret-as=\"cardinal\">"+concurso+"</say-as>"+
+        " da Loteria Federal <break time=\"1s\"/>os bilhetes premiados foram:\n" +
+        "<say-as interpret-as=\"ordinal\">1</say-as> <say-as interpret-as=\"cardinal\">: "+primeiroPremio+"</say-as>, \n"+
+        "<say-as interpret-as=\"ordinal\">2</say-as> <say-as interpret-as=\"cardinal\">: "+segundoPremio+"</say-as>,\n"+
+        "<say-as interpret-as=\"ordinal\">3</say-as> <say-as interpret-as=\"cardinal\">: "+terceiroPremio+"</say-as>, \n"+
+        "<say-as interpret-as=\"ordinal\">4</say-as> <say-as interpret-as=\"cardinal\">: "+quartoPremio+"</say-as> e \n"+
+        "<say-as interpret-as=\"ordinal\">5</say-as> <say-as interpret-as=\"cardinal\">: "+quintoPremio+"</say-as>. \n";
+
+        return retorno = cabecalho+"<break time=\"1s\"/>O valor do primeiro prémio foi de"+valorPrimeiro+".</speak>";    
     }
 }
