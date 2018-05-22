@@ -1,6 +1,7 @@
 'use strict';
 var lot = require("./loterias");
 var util = require("./util");
+var config = require('./config');
 const http = require('http');
 const https = require('https');
 const express = require("express");
@@ -12,7 +13,8 @@ const loterias = {
     Quina: 'Quina',
     Lotomania: 'Lotomania',
     Timemania: 'Timemania',
-    Dupla: 'Dupla-Sena'
+    Dupla: 'Dupla-Sena',
+    Federal: 'Federal'
 };
 
 app.use(
@@ -57,6 +59,9 @@ app.post("/caixaWebhook", function(req, res) {
             case loterias.Dupla:      
                 retorno = lot.getDuplaSena(result);
                 break;
+            case loterias.Federal:      
+                retorno = lot.getFederal(result);
+                break;
             default:
                 retorno = "Loteria não localizada."
         }
@@ -95,7 +100,7 @@ function getLoteria(options, cb){
 //*** define API de Loterias ***//
 function getOptions(jogo){
     var options = {
-    host: 'api.caixa.gov.br',
+    host: config.host.gateway,
     port: 8443,
     path: '/loterias/v2/resultados/'+jogo+'?concurso=',
     method: 'GET',
