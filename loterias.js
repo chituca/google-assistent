@@ -120,7 +120,7 @@ module.exports = {
     let cabecalho = "<speak>A lotomania <break time=\"1s\"/> para o concurso "+concurso+" foram sorteados: " +
     "<say-as interpret-as=\"cardinal\">"+sorteados[0]+"</say-as>,<say-as interpret-as=\"cardinal\">"+sorteados[1]+"</say-as>,"+
     "<say-as interpret-as=\"cardinal\">"+sorteados[2]+"</say-as>,<say-as interpret-as=\"cardinal\">"+sorteados[3]+"</say-as>,"+
-    "<say-as interpret-as=\"cardinal\">"+sorteados[4]+"</say-as>,"<say-as interpret-as=\"cardinal\">"+sorteados[5]+"</say-as>,"+
+    "<say-as interpret-as=\"cardinal\">"+sorteados[4]+"</say-as>,<say-as interpret-as=\"cardinal\">"+sorteados[5]+"</say-as>,"+
     "<say-as interpret-as=\"cardinal\">"+sorteados[6]+"</say-as>,<say-as interpret-as=\"cardinal\">"+sorteados[7]+"</say-as>,"+
     "<say-as interpret-as=\"cardinal\">"+sorteados[8]+"</say-as>,<say-as interpret-as=\"cardinal\">"+sorteados[9]+"</say-as>,"+
     "<say-as interpret-as=\"cardinal\">"+sorteados[10]+"</say-as>,<say-as interpret-as=\"cardinal\">"+sorteados[11]+"</say-as>,"+
