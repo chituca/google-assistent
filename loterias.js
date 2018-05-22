@@ -10,7 +10,7 @@ module.exports = {
         let sorteados = result.resultado.resultado.split('-').sort();
         let dataSorteio = util.formataData(result.resultado.data);
         let dataProximo = util.formataData(result.resultado.DT_PROXIMO_CONCURSO);
-        let cabecalho = "<speak>ok <break time=\"1s\"/>, para o concurso "+concurso+" foram sorteados: " +
+        let cabecalho = "<speak>Ok <break time=\"1s\"/>, para o concurso "+concurso+" foram sorteados: " +
         "<say-as interpret-as=\"cardinal\">"+sorteados[0]+"</say-as>,"+
         "<say-as interpret-as=\"cardinal\">"+sorteados[1]+"</say-as>,"+
         "<say-as interpret-as=\"cardinal\">"+sorteados[2]+"</say-as>,"+
@@ -45,7 +45,7 @@ module.exports = {
         let sorteados = result.resultado.resultado.split('-').sort();
         let dataSorteio = util.formataData(result.resultado.data);
         let dataProximo = util.formataData(result.resultado.DT_PROXIMO_CONCURSO);
-        let cabecalho = "<speak>tudo bem <break time=\"1s\"/>, para o concurso "+concurso+" foram sorteados: " +
+        let cabecalho = "<speak>Tudo bem <break time=\"1s\"/>, para o concurso "+concurso+" foram sorteados: " +
         "<say-as interpret-as=\"cardinal\">"+sorteados[0]+"</say-as>,"+
         "<say-as interpret-as=\"cardinal\">"+sorteados[1]+"</say-as>,"+
         "<say-as interpret-as=\"cardinal\">"+sorteados[2]+"</say-as>,"+
@@ -79,7 +79,7 @@ module.exports = {
     let sorteados = result.resultado.de_resultado.split('-').sort();
     let dataSorteio = util.formataData(result.resultado.dt_inclusao);
     let dataProximo = util.formataData(result.resultado.DT_PROXIMO_CONCURSO);
-    let cabecalho = "<speak>vamos lá <break time=\"1s\"/>, para o concurso "+concurso+" foram sorteados: " +
+    let cabecalho = "<speak>Vamos lá <break time=\"1s\"/>, para o concurso "+concurso+" foram sorteados: " +
     "<say-as interpret-as=\"cardinal\">"+sorteados[0]+"</say-as>,"+"<say-as interpret-as=\"cardinal\">"+sorteados[1]+"</say-as>,"+
     "<say-as interpret-as=\"cardinal\">"+sorteados[2]+"</say-as>,"+"<say-as interpret-as=\"cardinal\">"+sorteados[3]+"</say-as>,"+
     "<say-as interpret-as=\"cardinal\">"+sorteados[4]+"</say-as>,"+"<say-as interpret-as=\"cardinal\">"+sorteados[5]+"</say-as>,"+
@@ -158,10 +158,10 @@ module.exports = {
     let dataSorteio = util.formataData(result.resultado.DT_APURACAO);
     let dataProximo = util.formataData(result.resultado.DT_PROXIMO_CONCURSO);
     let cabecalho = "<speak>Para Timemania <break time=\"1s\"/> no concurso "+concurso+" os números sorteados foram: " +
-    "<say-as interpret-as=\"cardinal\">"+sorteados[0]+"</say-as>,"+"<say-as interpret-as=\"cardinal\">"+sorteados[1]+"</say-as>,"+
-    "<say-as interpret-as=\"cardinal\">"+sorteados[2]+"</say-as>,"+"<say-as interpret-as=\"cardinal\">"+sorteados[3]+"</say-as>,"+
-    "<say-as interpret-as=\"cardinal\">"+sorteados[4]+"</say-as>,"+"<say-as interpret-as=\"cardinal\">"+sorteados[5]+"</say-as>,"+
-    "</say-as>,"+"<say-as interpret-as=\"cardinal\">"+sorteados[6]+"</say-as> e";
+    "<say-as interpret-as=\"cardinal\">"+sorteados[0]+"</say-as>,"+"<say-as interpret-as=\"cardinal\"> "+sorteados[1]+"</say-as>,"+
+    "<say-as interpret-as=\"cardinal\"> "+sorteados[2]+"</say-as>,"+"<say-as interpret-as=\"cardinal\"> "+sorteados[3]+"</say-as>,"+
+    "<say-as interpret-as=\"cardinal\"> "+sorteados[4]+"</say-as>,"+"<say-as interpret-as=\"cardinal\"> "+sorteados[5]+"</say-as>,"+
+    "</say-as>,"+"<say-as interpret-as=\"cardinal\">"+sorteados[6]+"</say-as> e ";
 
     if(ganhadores === 0) {
         var estimativa = util.formataReal(result.resultado.VR_ESTIMATIVA_FAIXA_1);
