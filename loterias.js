@@ -117,7 +117,7 @@ module.exports = {
     let sorteados = result.resultado.de_resultado.split('-').sort();
     let dataSorteio = util.formataData(result.resultado.dt_inclusao);
     let dataProximo = util.formataData(result.resultado.DT_PROXIMO_CONCURSO);
-    let cabecalho = "<speak>A lotomania <break time=\"1s\"/> para o concurso "+concurso+" foram sorteados: " +
+    let cabecalho = "<speak>A Lotomania <break time=\"1s\"/> para o concurso "+concurso+" foram sorteados: " +
     "<say-as interpret-as=\"cardinal\">"+sorteados[0]+"</say-as>,<say-as interpret-as=\"cardinal\">"+sorteados[1]+"</say-as>,"+
     "<say-as interpret-as=\"cardinal\">"+sorteados[2]+"</say-as>,<say-as interpret-as=\"cardinal\">"+sorteados[3]+"</say-as>,"+
     "<say-as interpret-as=\"cardinal\">"+sorteados[4]+"</say-as>,<say-as interpret-as=\"cardinal\">"+sorteados[5]+"</say-as>,"+
@@ -158,9 +158,9 @@ module.exports = {
     let dataSorteio = util.formataData(result.resultado.DT_APURACAO);
     let dataProximo = util.formataData(result.resultado.DT_PROXIMO_CONCURSO);
     let cabecalho = "<speak>Para Timemania <break time=\"1s\"/> no concurso "+concurso+" os números sorteados foram: " +
-    "<say-as interpret-as=\"cardinal\">"+sorteados[0]+"</say-as>,"+"<say-as interpret-as=\"cardinal\"> "+sorteados[1]+"</say-as>,"+
-    "<say-as interpret-as=\"cardinal\"> "+sorteados[2]+"</say-as>,"+"<say-as interpret-as=\"cardinal\"> "+sorteados[3]+"</say-as>,"+
-    "<say-as interpret-as=\"cardinal\"> "+sorteados[4]+"</say-as>,"+"<say-as interpret-as=\"cardinal\"> "+sorteados[5]+"</say-as>e"+
+    "<say-as interpret-as=\"cardinal\">"+sorteados[0]+"</say-as>,<say-as interpret-as=\"cardinal\"> "+sorteados[1]+"</say-as>,"+
+    "<say-as interpret-as=\"cardinal\"> "+sorteados[2]+"</say-as>,<say-as interpret-as=\"cardinal\"> "+sorteados[3]+"</say-as>,"+
+    "<say-as interpret-as=\"cardinal\"> "+sorteados[4]+"</say-as>,<say-as interpret-as=\"cardinal\"> "+sorteados[5]+"</say-as> e"+
     "</say-as>"+"<say-as interpret-as=\"cardinal\"> "+sorteados[6]+"</say-as>, ";
 
     if(ganhadores === 0) {
@@ -241,7 +241,7 @@ module.exports = {
         let cabecalho = "<speak>Para o concurso <say-as interpret-as=\"cardinal\">"+concurso+"</say-as>"+
         " da Loteria Federal <break time=\"1s\"/>os bilhetes premiados foram:\n" +
         "<say-as interpret-as=\"ordinal\">1</say-as>º: "+primeiroPremio+", \n"+
-        "<say-as interpret-as=\"ordinal\">2</say-as>º: "+segundoPremio+",\n"+
+        "<say-as interpret-as=\"ordinal\">2</say-as>º: "+segundoPremio+", \n"+
         "<say-as interpret-as=\"ordinal\">3</say-as>º: "+terceiroPremio+", \n"+
         "<say-as interpret-as=\"ordinal\">4</say-as>º: "+quartoPremio+" e \n"+
         "<say-as interpret-as=\"ordinal\">5</say-as>º: "+quintoPremio+". \n";
