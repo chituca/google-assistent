@@ -30,7 +30,7 @@ app.post("/caixaWebhook", function(req, res) {
         req.body.queryResult.parameters.concurso
           ? req.body.queryResult.parameters.concurso
           : '';
-          
+
     var options = getOptions(loteriaSelecionada,concurso);
     
     getLoteria(options, function(err, result) {
@@ -38,7 +38,9 @@ app.post("/caixaWebhook", function(req, res) {
             throw new Error('Error ao acessar a API: ', err);
             reject();
         }
-       
+       if (!result.resultado){
+        retorno = "Concurso inválido!"
+       } else {
        switch(loteriaSelecionada){
             case config.loterias.Mega:
                 retorno = lot.getMegaSena(result);
@@ -63,7 +65,8 @@ app.post("/caixaWebhook", function(req, res) {
                 break;
             default:
                 retorno = "Loteria não localizada."
-        }
+       }
+    }
        return res.json({   
             "fulfillmentText": retorno,
             "fulfillmentMessages": [{
