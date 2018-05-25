@@ -29,7 +29,7 @@ app.post("/caixaWebhook", function(req, res) {
         req.body.queryResult.parameters &&
         req.body.queryResult.parameters.concurso
           ? req.body.queryResult.parameters.concurso
-          : "";
+          : '';
     var options = getOptions(loteriaSelecionada,concurso);
     
     getLoteria(options, function(err, result) {
