@@ -77,7 +77,7 @@ module.exports = {
     let concurso = result.resultado.nu_concurso;
     let ganhadores = result.resultado.qt_ganhador_faixa1;
     let sorteados = result.resultado.de_resultado.split('-').sort();
-    let dataSorteio = util.formataData(result.resultado.dt_inclusao);
+    let dataSorteio = util.formataData(result.resultado.dt_apuracao);
     let dataProximo = util.formataData(result.resultado.DT_PROXIMO_CONCURSO);
     let cabecalho = "<speak>Vamos lá <break time=\"1s\"/>, para o concurso "+concurso+" foram sorteados: " +
     "<say-as interpret-as=\"cardinal\">"+sorteados[0]+"</say-as>,"+"<say-as interpret-as=\"cardinal\">"+sorteados[1]+"</say-as>,"+
@@ -104,7 +104,7 @@ module.exports = {
                 apostasTexto = "aposta foi premiada";
             }
         return retorno = cabecalho+"<break time=\"1s\"/> <say-as interpret-as=\"cardinal\">"+ganhadores+
-        "</say-as>"+apostasTexto+" com valor de "+premio+".</speak>";    
+        "</say-as>"+apostasTexto+" com valor de "+premio+" o sortei foi realizado em "+dataSorteio+".</speak>";    
         }
     },
 
