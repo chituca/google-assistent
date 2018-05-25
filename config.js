@@ -2,7 +2,9 @@ module.exports = {
 
 host: host = { 
     
-        gateway: 'api.caixa.gov.br'
+        gateway: 'api.caixa.gov.br',
+        pathLoterias: '/loterias/v2/resultados/',
+        queryLoterias: '?concurso='
 
     },
 
