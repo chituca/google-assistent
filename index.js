@@ -17,14 +17,21 @@ app.use(
 app.use(bodyParser.json());
 
 app.post("/caixaWebhook", function(req, res) {
+    var retorno;
     var loteriaSelecionada =
       req.body.queryResult &&
       req.body.queryResult.parameters &&
       req.body.queryResult.parameters.Loterias
         ? req.body.queryResult.parameters.Loterias
         : "Erro ao identificar a loteria";
-    var retorno;
-    var options = getOptions(loteriaSelecionada);
+    var concurso =
+        req.body.queryResult &&
+        req.body.queryResult.parameters &&
+        req.body.queryResult.parameters.concurso
+          ? req.body.queryResult.parameters.concurso
+          : "";
+    var options = getOptions(loteriaSelecionada,concurso);
+    
     getLoteria(options, function(err, result) {
         if(err){
             throw new Error('Error ao acessar a API: ', err);
@@ -88,12 +95,12 @@ function getLoteria(options, cb){
     .end();
 }
 
-//*** define API de Loterias ***//
-function getOptions(jogo){
+//*** define parâmetros da API ***//
+function getOptions(jogo,concurso){
     var options = {
     host: config.host.gateway,
     port: 8443,
-    path: '/loterias/v2/resultados/'+jogo+'?concurso=',
+    path: config.host.pathLoterias+jogo+config.host.queryLoterias+concurso,
     method: 'GET',
     rejectUnauthorized: false
     };
