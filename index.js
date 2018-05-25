@@ -30,7 +30,17 @@ app.post("/caixaWebhook", function(req, res) {
         req.body.queryResult.parameters.concurso
           ? req.body.queryResult.parameters.concurso
           : '';
-    var options = getOptions(loteriaSelecionada,concurso);
+    if(Number.isInteger(concurso) || ''){
+        var options = getOptions(loteriaSelecionada,concurso);
+    } else{
+        retorno = "o número do concurso informado não é um número válido, refaça a pergunta, por favor."
+        return  {"fulfillmentText": retorno,
+                "fulfillmentMessages": [{
+                "text": {"text":[retorno]}
+                }],
+                "source": "caixa.gov.br"}
+    }
+    
     
     getLoteria(options, function(err, result) {
         if(err){
