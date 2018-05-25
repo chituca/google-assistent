@@ -16,7 +16,7 @@ app.use(
 
 app.use(bodyParser.json());
 
-app.post("/caixaWebhook", function(req, res) {
+app.post("/caixaWebhook", function(req, res) 
     var retorno;
     var loteriaSelecionada =
       req.body.queryResult &&
