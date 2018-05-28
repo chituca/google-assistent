@@ -38,15 +38,7 @@ app.post("/caixaWebhook", function(req, res) {
         req.body.queryResult.parameters.concurso
           ? req.body.queryResult.parameters.concurso
           : '';
-
-          if(req.body.queryResult.queryText === "GOOGLE_ASSISTANT_WELCOME"){
-            retorno = "Olá, bem ";
-            /* if (req.body.originalDetectIntentRequest.payload.user.lastSeen) {
-                 retorno = "Olá, bem vindo ao Assistente Virtual Caixa, por favor, diga em que posso ajudar!";
-               } else {
-                 retorno = "Olá, você aqui denovo em que posso ajudar!"
-               } */
-         }
+          
     var options = getOptions(loteriaSelecionada,concurso);
     
     getLoteria(options, function(err, result) {
