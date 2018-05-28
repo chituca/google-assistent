@@ -17,12 +17,13 @@ app.use(
 app.use(bodyParser.json());
 
 app.post("/caixaWebhook", function(req, res) {
-    if(req.payload.queryResult.queryText === "GOOGLE_ASSISTANT_WELCOME"){
-        if (req.payload.originalDetectIntentRequest.payload.user.lastSeen) {
+
+    if(req.body.queryResult.queryText === "GOOGLE_ASSISTANT_WELCOME"){
+       /* if (req.body.originalDetectIntentRequest.payload.user.lastSeen) {
             retorno = "Olá, bem vindo ao Assistente Virtual Caixa, por favor, diga em que posso ajudar!";
           } else {
             retorno = "Olá, você aqui denovo em que posso ajudar!"
-          } 
+          } */
     } 
     var retorno;
     var loteriaSelecionada =
@@ -38,6 +39,14 @@ app.post("/caixaWebhook", function(req, res) {
           ? req.body.queryResult.parameters.concurso
           : '';
 
+          if(req.body.queryResult.queryText === "GOOGLE_ASSISTANT_WELCOME"){
+            retorno = "Olá, bem ";
+            /* if (req.body.originalDetectIntentRequest.payload.user.lastSeen) {
+                 retorno = "Olá, bem vindo ao Assistente Virtual Caixa, por favor, diga em que posso ajudar!";
+               } else {
+                 retorno = "Olá, você aqui denovo em que posso ajudar!"
+               } */
+         }
     var options = getOptions(loteriaSelecionada,concurso);
     
     getLoteria(options, function(err, result) {
