@@ -1,5 +1,6 @@
 
 var lot = require("./loterias");
+var config = require('./config');
 
 module.exports = {
 
