@@ -17,6 +17,13 @@ app.use(
 app.use(bodyParser.json());
 
 app.post("/caixaWebhook", function(req, res) {
+    if(req.body.queryResult.queryText === "GOOGLE_ASSISTANT_WELCOME"){
+        if (req.body.originalDetectIntentRequest.payload.user.lastSeen) {
+            retorno = "Olá, bem vindo ao Assistente Virtual Caixa, por favor, diga em que posso ajudar!";
+          } else {
+            retorno = "Olá, você aqui denovo em que posso ajudar!"
+          } 
+    } 
     var retorno;
     var loteriaSelecionada =
       req.body.queryResult &&
