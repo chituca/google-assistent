@@ -2,7 +2,6 @@
 var lot = require("./loterias");
 var util = require("./util");
 var config = require('./config');
-var fluxos = require("./fluxos");
 const http = require('http');
 const https = require('https');
 const express = require("express");
@@ -34,8 +33,7 @@ app.post("/caixaWebhook", function(req, res) {
 
     var options = getOptions(loteriaSelecionada,concurso);
     
-        return fluxos.loterias.getLoteria(options);
-   /* getLoteria(options, function(err, result) {
+    getLoteria(options, function(err, result) {
         if(err){
             throw new Error('Error ao acessar a API: ', err);
             reject();
@@ -78,7 +76,7 @@ app.post("/caixaWebhook", function(req, res) {
             "source": "caixa.gov.br"
         });
              
-    });*/
+    });
    
   });
 
