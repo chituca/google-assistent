@@ -1,14 +1,8 @@
 
 function config(app){
-    //logger.info('config mensagem-router');
-    const express = require('express');
-    const router = express.Router();  
-
-    //router.use(loginMiddleware);
-
+   // const express = require('express');
+   // const router = express.Router();  
     app.get('/teste', teste);
-
-    //app.use('/msg', router);
 }
 
 async function teste(req, res){
