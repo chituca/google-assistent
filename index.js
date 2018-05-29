@@ -7,7 +7,6 @@ const https = require('https');
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
-const DialogflowApp = require('actions-on-google').DialogflowApp;
 
 //config middlewares
 app.use(bodyParser({limit: '50mb'}));
