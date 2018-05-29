@@ -6,7 +6,7 @@ function config(app){
 
     //router.use(loginMiddleware);
 
-    router.get('/teste', teste);
+    app.get('/teste', teste);
 
     //app.use('/msg', router);
 }
