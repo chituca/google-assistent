@@ -7,24 +7,21 @@ const https = require('https');
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
+const DialogflowApp = require('actions-on-google').DialogflowApp;
 
-app.use(
-    bodyParser.urlencoded({
-      extended: true
-    })
-  );
+//config middlewares
+app.use(bodyParser({limit: '50mb'}));
+app.use(bodyParser.urlencoded({extended: true}));// for parsing application/x-www-form-urlencoded
+app.use(bodyParser.json());// for parsing application/json
 
-app.use(bodyParser.json());
+//Running
+app.get('/', function (req, res) {
+    res.send('Teste Caixa Ok!');
+  });
 
 app.post("/caixaWebhook", function(req, res) {
 
-    if(req.body.queryResult.queryText === "GOOGLE_ASSISTANT_WELCOME"){
-       /* if (req.body.originalDetectIntentRequest.payload.user.lastSeen) {
-            retorno = "Olá, bem vindo ao Assistente Virtual Caixa, por favor, diga em que posso ajudar!";
-          } else {
-            retorno = "Olá, você aqui denovo em que posso ajudar!"
-          } */
-    } 
+
     var retorno;
     var loteriaSelecionada =
       req.body.queryResult &&
@@ -38,7 +35,7 @@ app.post("/caixaWebhook", function(req, res) {
         req.body.queryResult.parameters.concurso
           ? req.body.queryResult.parameters.concurso
           : '';
-          
+    
     var options = getOptions(loteriaSelecionada,concurso);
     
     getLoteria(options, function(err, result) {
