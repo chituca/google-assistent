@@ -13,8 +13,12 @@ app.use(bodyParser({limit: '50mb'}));
 app.use(bodyParser.urlencoded({extended: true}));// for parsing application/x-www-form-urlencoded
 app.use(bodyParser.json());// for parsing application/json
 
-app.post("/caixaWebhook", function(req, res) {
+//Running
+app.get('/', function (req, res) {
+    res.send('Teste Caixa Ok!');
+  });
 
+app.post("/caixaWebhook", function(req, res) {
 
     var retorno;
     var loteriaSelecionada =
